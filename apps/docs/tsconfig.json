@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "lib": [
+      "es2022",
+      "dom",
+      "dom.iterable"
+    ],
+    "jsx": "react-jsx",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "incremental": true,
+    "types": [
+      "react"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@mmdev98/base-ui-plus": [
+        "../../packages/base-ui-plus/src"
+      ],
+      "@mmdev98/base-ui-plus/*": [
+        "../../packages/base-ui-plus/src/*"
+      ],
+      "docs/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "scripts/*.mts",
+    "types.d.ts",
+    "next-env.d.ts",
+    "next.config.mjs",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "export"
+  ]
+}

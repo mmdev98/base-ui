@@ -1,0 +1,261 @@
+{
+  "name": "@mmdev98/base-ui-plus",
+  "version": "0.1.0",
+  "description": "Headless React primitives: Base UI re-exports plus extra unstyled components.",
+  "license": "MIT",
+  "author": "Mohammad Moradi <mmdev98@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmdev98/base-ui-plus.git",
+    "directory": "packages/base-ui-plus"
+  },
+  "keywords": [
+    "react",
+    "headless",
+    "unstyled",
+    "primitives",
+    "base-ui",
+    "a11y"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    },
+    "./accordion": {
+      "types": "./build/accordion/index.d.ts",
+      "default": "./build/accordion/index.js"
+    },
+    "./alert-dialog": {
+      "types": "./build/alert-dialog/index.d.ts",
+      "default": "./build/alert-dialog/index.js"
+    },
+    "./autocomplete": {
+      "types": "./build/autocomplete/index.d.ts",
+      "default": "./build/autocomplete/index.js"
+    },
+    "./avatar": {
+      "types": "./build/avatar/index.d.ts",
+      "default": "./build/avatar/index.js"
+    },
+    "./button": {
+      "types": "./build/button/index.d.ts",
+      "default": "./build/button/index.js"
+    },
+    "./checkbox": {
+      "types": "./build/checkbox/index.d.ts",
+      "default": "./build/checkbox/index.js"
+    },
+    "./checkbox-group": {
+      "types": "./build/checkbox-group/index.d.ts",
+      "default": "./build/checkbox-group/index.js"
+    },
+    "./clipboard": {
+      "types": "./build/clipboard/index.d.ts",
+      "default": "./build/clipboard/index.js"
+    },
+    "./collapsible": {
+      "types": "./build/collapsible/index.d.ts",
+      "default": "./build/collapsible/index.js"
+    },
+    "./combobox": {
+      "types": "./build/combobox/index.d.ts",
+      "default": "./build/combobox/index.js"
+    },
+    "./context-menu": {
+      "types": "./build/context-menu/index.d.ts",
+      "default": "./build/context-menu/index.js"
+    },
+    "./csp-provider": {
+      "types": "./build/csp-provider/index.d.ts",
+      "default": "./build/csp-provider/index.js"
+    },
+    "./dialog": {
+      "types": "./build/dialog/index.d.ts",
+      "default": "./build/dialog/index.js"
+    },
+    "./direction-provider": {
+      "types": "./build/direction-provider/index.d.ts",
+      "default": "./build/direction-provider/index.js"
+    },
+    "./drawer": {
+      "types": "./build/drawer/index.d.ts",
+      "default": "./build/drawer/index.js"
+    },
+    "./field": {
+      "types": "./build/field/index.d.ts",
+      "default": "./build/field/index.js"
+    },
+    "./fieldset": {
+      "types": "./build/fieldset/index.d.ts",
+      "default": "./build/fieldset/index.js"
+    },
+    "./form": {
+      "types": "./build/form/index.d.ts",
+      "default": "./build/form/index.js"
+    },
+    "./gallery": {
+      "types": "./build/gallery/index.d.ts",
+      "default": "./build/gallery/index.js"
+    },
+    "./input": {
+      "types": "./build/input/index.d.ts",
+      "default": "./build/input/index.js"
+    },
+    "./menu": {
+      "types": "./build/menu/index.d.ts",
+      "default": "./build/menu/index.js"
+    },
+    "./menubar": {
+      "types": "./build/menubar/index.d.ts",
+      "default": "./build/menubar/index.js"
+    },
+    "./merge-props": {
+      "types": "./build/merge-props/index.d.ts",
+      "default": "./build/merge-props/index.js"
+    },
+    "./meter": {
+      "types": "./build/meter/index.d.ts",
+      "default": "./build/meter/index.js"
+    },
+    "./navigation-menu": {
+      "types": "./build/navigation-menu/index.d.ts",
+      "default": "./build/navigation-menu/index.js"
+    },
+    "./number-field": {
+      "types": "./build/number-field/index.d.ts",
+      "default": "./build/number-field/index.js"
+    },
+    "./otp-field": {
+      "types": "./build/otp-field/index.d.ts",
+      "default": "./build/otp-field/index.js"
+    },
+    "./popover": {
+      "types": "./build/popover/index.d.ts",
+      "default": "./build/popover/index.js"
+    },
+    "./preview-card": {
+      "types": "./build/preview-card/index.d.ts",
+      "default": "./build/preview-card/index.js"
+    },
+    "./progress": {
+      "types": "./build/progress/index.d.ts",
+      "default": "./build/progress/index.js"
+    },
+    "./radio": {
+      "types": "./build/radio/index.d.ts",
+      "default": "./build/radio/index.js"
+    },
+    "./radio-group": {
+      "types": "./build/radio-group/index.d.ts",
+      "default": "./build/radio-group/index.js"
+    },
+    "./scroll-area": {
+      "types": "./build/scroll-area/index.d.ts",
+      "default": "./build/scroll-area/index.js"
+    },
+    "./select": {
+      "types": "./build/select/index.d.ts",
+      "default": "./build/select/index.js"
+    },
+    "./separator": {
+      "types": "./build/separator/index.d.ts",
+      "default": "./build/separator/index.js"
+    },
+    "./slider": {
+      "types": "./build/slider/index.d.ts",
+      "default": "./build/slider/index.js"
+    },
+    "./switch": {
+      "types": "./build/switch/index.d.ts",
+      "default": "./build/switch/index.js"
+    },
+    "./tabs": {
+      "types": "./build/tabs/index.d.ts",
+      "default": "./build/tabs/index.js"
+    },
+    "./toast": {
+      "types": "./build/toast/index.d.ts",
+      "default": "./build/toast/index.js"
+    },
+    "./toggle": {
+      "types": "./build/toggle/index.d.ts",
+      "default": "./build/toggle/index.js"
+    },
+    "./toggle-group": {
+      "types": "./build/toggle-group/index.d.ts",
+      "default": "./build/toggle-group/index.js"
+    },
+    "./toolbar": {
+      "types": "./build/toolbar/index.d.ts",
+      "default": "./build/toolbar/index.js"
+    },
+    "./tooltip": {
+      "types": "./build/tooltip/index.d.ts",
+      "default": "./build/tooltip/index.js"
+    },
+    "./types": {
+      "types": "./build/types/index.d.ts",
+      "default": "./build/types/index.js"
+    },
+    "./unstable-use-media-query": {
+      "types": "./build/unstable-use-media-query/index.d.ts",
+      "default": "./build/unstable-use-media-query/index.js"
+    },
+    "./use-render": {
+      "types": "./build/use-render/index.d.ts",
+      "default": "./build/use-render/index.js"
+    },
+    "./utils": {
+      "types": "./build/utils/index.d.ts",
+      "default": "./build/utils/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "generate:exports": "node scripts/generate-exports.mjs",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.8.0",
+    "@base-ui/utils": "0.4.0"
+  },
+  "peerDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^24.19.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "jsdom": "^30.1.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "build",
+    "linkDirectory": false
+  }
+}

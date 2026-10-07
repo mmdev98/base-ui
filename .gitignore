@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+
+# build output
+dist
+build
+.turbo
+coverage
+.next
+export
+
+# typescript
+*.tsbuildinfo
+
+# env files
+.env*
+
+# misc
+.DS_Store
+*.pem
+*.log
+
+# IDE
+.idea
+.vscode
+
+# local package tarballs (pnpm pack)
+.pack
