@@ -370,8 +370,10 @@ are tried by hand: there is no separate playground.
 - To try the package in an app before publishing: `pnpm build`, then
   `pnpm pack --pack-destination <absolute path>` from `packages/base-ui` (pnpm resolves a
   relative path from `build/`), and install the `.tgz` in the app with `pnpm add <path to .tgz>`.
+- The changelog is the docs page `apps/docs/src/content/changelog.mdx`, newest release first.
 - Release steps: `pnpm build && pnpm test`, bump the version in `packages/base-ui/package.json`,
-  then `pnpm publish` from `packages/base-ui`. Publish only when asked.
+  add its entry to the changelog, then `pnpm publish` from `packages/base-ui`. Publish only when
+  asked.
 
 ## Commit messages
 
