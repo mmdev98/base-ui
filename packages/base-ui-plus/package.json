@@ -1,7 +1,7 @@
 {
   "name": "@mmdev98/base-ui-plus",
   "version": "0.1.0",
-  "description": "Headless React primitives: Base UI re-exports plus extra unstyled components.",
+  "description": "Unstyled React components for accessible interfaces, built on Base UI.",
   "license": "MIT",
   "author": "Mohammad Moradi <mmdev98@gmail.com>",
   "repository": {

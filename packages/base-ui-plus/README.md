@@ -1,9 +1,8 @@
 # @mmdev98/base-ui-plus
 
-Headless React primitives: every [Base UI](https://base-ui.com) component, plus extra unstyled
-components built the same way.
+Unstyled React components for accessible interfaces, built on [Base UI](https://base-ui.com).
 
-Built on Base UI, not affiliated with MUI or the Base UI team.
+Not affiliated with MUI or the Base UI team.
 
 ```sh
 pnpm add @mmdev98/base-ui-plus

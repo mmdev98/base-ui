@@ -8,11 +8,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE.name} — headless React primitives`,
+    default: `${SITE.name} — unstyled React components`,
     template: `%s · ${SITE.name}`,
   },
   description:
-    "Unstyled, accessible React primitives built on Base UI: every Base UI component, plus the ones it doesn't ship.",
+    "Unstyled React components for accessible interfaces, built on Base UI.",
   icons: {
     icon: [
       { url: withBasePath("/favicon.svg"), type: "image/svg+xml" },
