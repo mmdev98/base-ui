@@ -10,8 +10,9 @@ export default tseslint.config(
       "**/build/**",
       "**/coverage/**",
       "**/.turbo/**",
-      // Copied from Base UI, which lints it with its own rules.
-      "apps/docs/**",
+      "**/.next/**",
+      "**/export/**",
+      "**/next-env.d.ts",
     ],
   },
   js.configs.recommended,

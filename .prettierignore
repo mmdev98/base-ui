@@ -2,5 +2,6 @@ dist
 build
 coverage
 pnpm-lock.yaml
-# Copied from Base UI and formatted with its own config
-apps/docs
+next-env.d.ts
+.next
+export
