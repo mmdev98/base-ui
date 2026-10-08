@@ -12,7 +12,13 @@ export const metadata: Metadata = {
   },
   description:
     "Unstyled, accessible React primitives built on Base UI: every Base UI component, plus the ones it doesn't ship.",
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout(props: {

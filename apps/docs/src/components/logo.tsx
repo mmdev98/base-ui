@@ -1,16 +1,20 @@
 import * as React from "react";
 
+/** Base UI's mark, then the wordmark. */
 export function Logo(): React.ReactElement {
   return (
     <span className="flex items-center gap-2 font-mono text-sm font-medium tracking-tight">
-      <span
+      <svg
         aria-hidden
-        className="flex size-6 items-center justify-center rounded-md border border-line-strong bg-panel text-accent"
+        width="14"
+        height="20"
+        viewBox="0 0 17 24"
+        fill="currentColor"
+        className="text-fg"
       >
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      </span>
+        <path d="M9.5001 7.01537C9.2245 6.99837 9 7.22385 9 7.49999V23C13.4183 23 17 19.4183 17 15C17 10.7497 13.6854 7.27351 9.5001 7.01537Z" />
+        <path d="M8 9.8V12V23C3.58172 23 0 19.0601 0 14.2V12V1C4.41828 1 8 4.93989 8 9.8Z" />
+      </svg>
       <span>
         base-ui<span className="text-accent">+</span>
       </span>
