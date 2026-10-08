@@ -12,7 +12,11 @@ import {
   SITE,
   type DocPage,
 } from "@/nav";
+import { ExternalLinkIcon, GitHubIcon, MarkdownIcon } from "./icons";
 import { TableOfContents } from "./table-of-contents";
+
+const pageActionClass =
+  "group inline-flex items-center gap-2 rounded-md border border-line bg-panel px-3 py-1.5 text-sm text-muted transition-colors hover:border-line-strong hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 export function getDocMetadata(slug: string): Metadata {
   const page = findPage(slug);
@@ -52,25 +56,34 @@ export async function DocPageView(props: {
           {"// "}
           {getSection(page).title.toLowerCase()}
         </p>
-        <h1 className="font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
-          {page.title}
-        </h1>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+          <h1 className="font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+            {page.title}
+          </h1>
+          <div className="flex flex-wrap gap-2">
+            <a href={getMarkdownHref(page)} className={pageActionClass}>
+              <MarkdownIcon className="text-faint group-hover:text-accent" />
+              View as Markdown
+            </a>
+            <a
+              href={`${SITE.repository}/blob/main/apps/docs/src/content/${page.file}`}
+              target="_blank"
+              rel="noreferrer"
+              className={pageActionClass}
+            >
+              <GitHubIcon
+                width={14}
+                height={14}
+                className="text-faint group-hover:text-accent"
+              />
+              Edit on GitHub
+              <ExternalLinkIcon className="text-faint" />
+            </a>
+          </div>
+        </div>
         <p className="mt-3 max-w-2xl text-lg leading-8 text-muted">
           {page.description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-4 font-mono text-xs text-faint">
-          <a href={getMarkdownHref(page)} className="hover:text-fg">
-            view as markdown
-          </a>
-          <a
-            href={`${SITE.repository}/blob/main/apps/docs/src/content/${page.file}`}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-fg"
-          >
-            edit on github ↗
-          </a>
-        </div>
 
         <div className="mt-8">
           <Content />

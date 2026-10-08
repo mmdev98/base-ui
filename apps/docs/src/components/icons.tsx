@@ -107,6 +107,55 @@ export function ArrowRightIcon(props: IconProps): React.ReactElement {
   );
 }
 
+export function MarkdownIcon(props: IconProps): React.ReactElement {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      {...props}
+    >
+      <rect
+        x="1"
+        y="3.5"
+        width="14"
+        height="9"
+        rx="1.5"
+        stroke="currentColor"
+      />
+      <path
+        d="M3.5 10.5v-5l2 2.5 2-2.5v5M11 5.5v5m-1.75-1.75L11 10.5l1.75-1.75"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function ExternalLinkIcon(props: IconProps): React.ReactElement {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      {...props}
+    >
+      <path
+        d="M6 3.5H3.5v9h9V10M9 3h4v4m0-4L7.5 8.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function MenuIcon(props: IconProps): React.ReactElement {
   return (
     <svg
