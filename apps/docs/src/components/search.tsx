@@ -3,6 +3,7 @@
 import { Dialog } from "@mmdev98/base-ui-plus/dialog";
 import { useRouter } from "next/navigation";
 import * as React from "react";
+import { withBasePath } from "@/lib/base-path";
 import type { SearchEntry } from "@/lib/markdown";
 import { SearchIcon } from "./icons";
 
@@ -10,7 +11,7 @@ let indexPromise: Promise<SearchEntry[]> | undefined;
 
 /** Fetches the index built by `/search-index.json` once, on first open. */
 function loadIndex(): Promise<SearchEntry[]> {
-  indexPromise ??= fetch("/search-index.json")
+  indexPromise ??= fetch(withBasePath("/search-index.json"))
     .then((response) => response.json() as Promise<SearchEntry[]>)
     .catch((error: unknown) => {
       indexPromise = undefined;

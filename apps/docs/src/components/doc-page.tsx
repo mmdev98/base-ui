@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import * as React from "react";
 import { pageContent } from "@/content/pages";
+import { withBasePath } from "@/lib/base-path";
 import { getPageSections } from "@/lib/markdown";
 import {
   findPage,
@@ -24,7 +25,7 @@ export function getDocMetadata(slug: string): Metadata {
 }
 
 export function getMarkdownHref(page: DocPage): string {
-  return `/md/${page.slug || "index"}.md`;
+  return withBasePath(`/md/${page.slug || "index"}.md`);
 }
 
 export async function DocPageView(props: {

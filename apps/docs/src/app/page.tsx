@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@/components/icons";
 import { InstallCommand } from "@/components/install-command";
 import { Logo } from "@/components/logo";
 import { SiteHeader } from "@/components/site-header";
+import { withBasePath } from "@/lib/base-path";
 import GalleryDemo from "@/content/components/gallery/demos/hero";
 import {
   getBaseUiEntries,
@@ -260,7 +261,7 @@ export default function HomePage(): React.ReactElement {
             <Link href="/docs" className="hover:text-fg">
               docs
             </Link>
-            <a href="/llms.txt" className="hover:text-fg">
+            <a href={withBasePath("/llms.txt")} className="hover:text-fg">
               llms.txt
             </a>
             <a

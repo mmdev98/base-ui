@@ -5,6 +5,9 @@ import nextMdx from "@next/mdx";
 /** @param {string} name */
 const pipeline = (name) => path.join(import.meta.dirname, "src/pipeline", name);
 
+/** `/base-ui-plus` when built for GitHub Pages; empty locally. */
+const basePath = process.env.DOCS_BASE_PATH ?? "";
+
 const withMdx = nextMdx({
   options: {
     remarkPlugins: [
@@ -21,6 +24,8 @@ const nextConfig = {
   pageExtensions: ["tsx", "ts", "mdx"],
   serverExternalPackages: ["typescript", "shiki"],
   devIndicators: false,
+  basePath,
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
   ...(process.env.NODE_ENV === "production" && {
     output: "export",
     distDir: "export",

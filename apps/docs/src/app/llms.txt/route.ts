@@ -1,3 +1,4 @@
+import { withBasePath } from "@/lib/base-path";
 import { getLibraryVersion } from "@/lib/library";
 import { sections, SITE } from "@/nav";
 
@@ -17,13 +18,13 @@ export function GET(): Response {
       "",
       ...section.pages.map(
         (page) =>
-          `- [${page.title}](/md/${page.slug || "index"}.md): ${page.description}`,
+          `- [${page.title}](${withBasePath(`/md/${page.slug || "index"}.md`)}): ${page.description}`,
       ),
       "",
     ]),
     "## Optional",
     "",
-    "- [Full docs](/llms-full.txt): every page in one file",
+    `- [Full docs](${withBasePath("/llms-full.txt")}): every page in one file`,
     "",
   ].join("\n");
 

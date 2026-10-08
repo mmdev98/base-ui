@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import * as React from "react";
+import { withBasePath } from "@/lib/base-path";
 import { SITE } from "@/nav";
 import "./globals.css";
 
@@ -14,10 +15,10 @@ export const metadata: Metadata = {
     "Unstyled, accessible React primitives built on Base UI: every Base UI component, plus the ones it doesn't ship.",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: withBasePath("/favicon.svg"), type: "image/svg+xml" },
+      { url: withBasePath("/favicon.ico"), sizes: "any" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: withBasePath("/apple-touch-icon.png"),
   },
 };
 
