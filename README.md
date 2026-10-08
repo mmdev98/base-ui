@@ -1,6 +1,6 @@
 # Base UI Plus
 
-Base UI Plus is a library of unstyled React components for accessible interfaces, built on
+Unstyled advanced React components for accessible interfaces, built on
 [Base UI](https://base-ui.com). It includes every Base UI component, plus the ones Base UI doesn't have.
 
 ## Documentation
