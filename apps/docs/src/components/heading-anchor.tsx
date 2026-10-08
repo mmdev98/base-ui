@@ -2,7 +2,8 @@ import { cn } from "cn";
 import * as React from "react";
 
 const STYLES = {
-  2: "mt-14 mb-4 border-t border-line pt-10 font-mono text-xl font-semibold tracking-tight text-fg",
+  // The first heading sits right under the page header's border: no second one.
+  2: "mt-14 mb-4 border-t border-line pt-10 first:mt-0 first:border-t-0 first:pt-0 font-mono text-xl font-semibold tracking-tight text-fg",
   3: "mt-10 mb-3 text-base font-semibold text-fg",
   4: "mt-8 mb-2 text-sm font-semibold text-fg",
 } as const;
