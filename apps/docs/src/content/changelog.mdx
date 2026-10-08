@@ -1,0 +1,25 @@
+The package follows semver. Until `1.0.0`, a minor version (`0.x.0`) may break the API; each
+breaking change is listed under its release.
+
+## v0.1.0
+
+October 8, 2026. The first release.
+
+### New components
+
+- **[Gallery](/docs/components/gallery)**: thumbnails that open a full-screen image viewer.
+  The image flies out of its thumbnail and back, and the viewer handles swipe, pinch to zoom,
+  double tap, pan, drag to close and the keyboard. Comes with toolbar parts for navigation,
+  zoom, download and delete.
+- **[Clipboard](/docs/components/clipboard)**: a button that copies a value and shows that it
+  was copied. `Root`, `Trigger` and `Indicator` expose `data-copied`.
+
+### Base UI
+
+- Every `@base-ui/react` entry point is re-exported under the same path, from Base UI `1.8.0`.
+- `@mmdev98/base-ui/utils` re-exports the `@base-ui/utils` `0.4.0` hooks the primitives are
+  built on, such as `useControlled`, `useStableCallback` and `useTimeout`.
+
+### Requirements
+
+- React 19.

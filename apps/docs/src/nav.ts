@@ -37,6 +37,12 @@ export const sections: DocSection[] = [
           "Install the package, render a primitive and style it with its data attributes.",
         file: "quick-start.mdx",
       },
+      {
+        slug: "changelog",
+        title: "Changelog",
+        description: "What changed in each release.",
+        file: "changelog.mdx",
+      },
     ],
   },
   {

@@ -8,6 +8,7 @@ export const pageContent: Record<
 > = {
   "": () => import("./introduction.mdx"),
   "quick-start": () => import("./quick-start.mdx"),
+  changelog: () => import("./changelog.mdx"),
   "components/clipboard": () => import("./components/clipboard/index.mdx"),
   "components/gallery": () => import("./components/gallery/index.mdx"),
 };
