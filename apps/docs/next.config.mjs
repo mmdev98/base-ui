@@ -5,7 +5,7 @@ import nextMdx from "@next/mdx";
 /** @param {string} name */
 const pipeline = (name) => path.join(import.meta.dirname, "src/pipeline", name);
 
-/** `/base-ui-plus` when built for GitHub Pages; empty locally. */
+/** `/base-ui` when built for GitHub Pages; empty locally. */
 const basePath = process.env.DOCS_BASE_PATH ?? "";
 
 const withMdx = nextMdx({

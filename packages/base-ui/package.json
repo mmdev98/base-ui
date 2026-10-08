@@ -6,7 +6,7 @@
   "author": "Mohammad Moradi <mmdev98@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mmdev98/base-ui-plus.git",
+    "url": "git+https://github.com/mmdev98/base-ui.git",
     "directory": "packages/base-ui"
   },
   "keywords": [

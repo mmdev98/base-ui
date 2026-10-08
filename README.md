@@ -5,4 +5,4 @@ Unstyled advanced React components for accessible interfaces, built on
 
 ## Documentation
 
-To get started, check out the [Base UI documentation](https://mmdev98.github.io/base-ui-plus/).
+To get started, check out the [Base UI documentation](https://mmdev98.github.io/base-ui/).
