@@ -14,7 +14,7 @@ import {
 } from "@/lib/library";
 import { getPageHref, sections, SITE } from "@/nav";
 
-const HERO_CODE = `import { Gallery } from "@mmdev98/base-ui-plus/gallery";
+const HERO_CODE = `import { Gallery } from "@mmdev98/base-ui/gallery";
 
 <Gallery.Root items={photos}>
   {photos.map((photo, index) => (

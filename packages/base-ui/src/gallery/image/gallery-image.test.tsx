@@ -89,7 +89,7 @@ describe("Gallery.Image", () => {
           <Gallery.Image />
         </Gallery.Root>,
       ),
-    ).toThrow("Base UI Plus: GalleryItemContext is missing.");
+    ).toThrow("Base UI: GalleryItemContext is missing.");
     consoleError.mockRestore();
   });
 });

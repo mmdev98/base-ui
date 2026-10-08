@@ -19,7 +19,7 @@ export function useGalleryItemContext(): GalleryItemContextValue {
   const context = use(GalleryItemContext);
   if (!context) {
     throw new Error(
-      "Base UI Plus: GalleryItemContext is missing. " +
+      "Base UI: GalleryItemContext is missing. " +
         "Gallery.Image must be placed within <Gallery.Item>.",
     );
   }

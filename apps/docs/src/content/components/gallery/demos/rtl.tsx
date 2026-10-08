@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { DirectionProvider } from "@mmdev98/base-ui-plus/direction-provider";
-import { Gallery } from "@mmdev98/base-ui-plus/gallery";
+import { DirectionProvider } from "@mmdev98/base-ui/direction-provider";
+import { Gallery } from "@mmdev98/base-ui/gallery";
 import { getThumbnailSrc, photos } from "./_photos";
 import { ChevronIcon, CloseIcon } from "./_viewer";
 import { classes } from "./_classes";

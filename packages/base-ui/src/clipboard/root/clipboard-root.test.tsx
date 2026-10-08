@@ -84,7 +84,7 @@ describe("Clipboard.Root", () => {
       .mockImplementation(() => {});
 
     expect(() => render(<Clipboard.Trigger>Copy</Clipboard.Trigger>)).toThrow(
-      "Base UI Plus: ClipboardRootContext is missing. " +
+      "Base UI: ClipboardRootContext is missing. " +
         "Clipboard parts must be placed within <Clipboard.Root>.",
     );
     consoleError.mockRestore();

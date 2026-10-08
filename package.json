@@ -1,5 +1,5 @@
 {
-  "name": "base-ui-plus-monorepo",
+  "name": "base-ui-monorepo",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@12.9.1",
@@ -7,7 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "build": "turbo run build --filter=@mmdev98/base-ui-plus",
+    "build": "turbo run build --filter=@mmdev98/base-ui",
     "dev": "turbo run dev --filter=docs",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",

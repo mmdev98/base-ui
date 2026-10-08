@@ -104,7 +104,7 @@ export function useGalleryRootContext(): GalleryRootContextValue {
   const context = use(GalleryRootContext);
   if (!context) {
     throw new Error(
-      "Base UI Plus: GalleryRootContext is missing. " +
+      "Base UI: GalleryRootContext is missing. " +
         "Gallery parts must be placed within <Gallery.Root>.",
     );
   }
@@ -115,7 +115,7 @@ export function useGalleryRootZoomContext(): GalleryRootZoomContextValue {
   const context = use(GalleryRootZoomContext);
   if (!context) {
     throw new Error(
-      "Base UI Plus: GalleryRootZoomContext is missing. " +
+      "Base UI: GalleryRootZoomContext is missing. " +
         "Gallery parts must be placed within <Gallery.Root>.",
     );
   }

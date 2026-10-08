@@ -1,7 +1,7 @@
 "use client";
 
-import { Collapsible } from "@mmdev98/base-ui-plus/collapsible";
-import { Tabs } from "@mmdev98/base-ui-plus/tabs";
+import { Collapsible } from "@mmdev98/base-ui/collapsible";
+import { Tabs } from "@mmdev98/base-ui/tabs";
 import { cn } from "cn";
 import * as React from "react";
 import { CopyButton } from "./copy-button";

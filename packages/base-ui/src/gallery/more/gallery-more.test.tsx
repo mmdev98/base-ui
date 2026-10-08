@@ -53,7 +53,7 @@ describe("Gallery.More", () => {
           <Gallery.More />
         </Gallery.Root>,
       ),
-    ).toThrow("Base UI Plus: GalleryListContext is missing.");
+    ).toThrow("Base UI: GalleryListContext is missing.");
     consoleError.mockRestore();
   });
 });

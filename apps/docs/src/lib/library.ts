@@ -5,7 +5,7 @@ import * as path from "node:path";
 /** Root of the published package, read from source like the demos. */
 export const LIBRARY_ROOT = path.resolve(
   process.cwd(),
-  "../../packages/base-ui-plus",
+  "../../packages/base-ui",
 );
 export const LIBRARY_SRC = path.join(LIBRARY_ROOT, "src");
 

@@ -32,7 +32,7 @@ describe("Gallery.Item", () => {
           <Gallery.Item index={0} />
         </Gallery.Root>,
       ),
-    ).toThrow("Base UI Plus: GalleryViewportContext is missing.");
+    ).toThrow("Base UI: GalleryViewportContext is missing.");
     consoleError.mockRestore();
   });
 });

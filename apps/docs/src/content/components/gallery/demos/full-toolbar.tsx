@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Gallery } from "@mmdev98/base-ui-plus/gallery";
+import { Gallery } from "@mmdev98/base-ui/gallery";
 import { getThumbnailSrc, photos } from "./_photos";
 import { ChevronIcon, DemoViewer } from "./_viewer";
 import { classes } from "./_classes";

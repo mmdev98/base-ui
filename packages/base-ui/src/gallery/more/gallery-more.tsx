@@ -36,7 +36,7 @@ export function GalleryMore(
   const list = useGalleryListContext();
   if (!list) {
     throw new Error(
-      "Base UI Plus: GalleryListContext is missing. " +
+      "Base UI: GalleryListContext is missing. " +
         "Gallery.More shows the triggers hidden by a list, so it must be placed within <Gallery.List>.",
     );
   }

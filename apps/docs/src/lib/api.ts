@@ -82,7 +82,7 @@ const LIBRARY_SRC_POSIX = toPosix(LIBRARY_SRC);
 
 const cache = new Map<string, { version: number; api: ComponentApi }>();
 
-/** Reads the API of `packages/base-ui-plus/src/<component>`. Cached until a file there changes. */
+/** Reads the API of `packages/base-ui/src/<component>`. Cached until a file there changes. */
 export function getComponentApi(component: string): ComponentApi {
   const directory = path.join(LIBRARY_SRC, component);
   if (!fs.existsSync(path.join(directory, "index.ts"))) {

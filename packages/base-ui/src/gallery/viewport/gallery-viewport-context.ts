@@ -18,7 +18,7 @@ export function useGalleryViewportContext(): GalleryViewportContextValue {
   const context = use(GalleryViewportContext);
   if (!context) {
     throw new Error(
-      "Base UI Plus: GalleryViewportContext is missing. " +
+      "Base UI: GalleryViewportContext is missing. " +
         "Gallery.Item must be placed within <Gallery.Viewport>.",
     );
   }

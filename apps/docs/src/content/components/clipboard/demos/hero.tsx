@@ -1,14 +1,14 @@
 "use client";
 import * as React from "react";
-import { Clipboard } from "@mmdev98/base-ui-plus/clipboard";
+import { Clipboard } from "@mmdev98/base-ui/clipboard";
 
 export default function ExampleClipboard() {
   return (
     <Clipboard.Root
-      value="pnpm add @mmdev98/base-ui-plus"
+      value="pnpm add @mmdev98/base-ui"
       className="flex items-center gap-2 rounded-md border border-neutral-200 bg-white py-1 pr-1 pl-3 text-neutral-950 data-copied:border-green-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white"
     >
-      <code className="font-mono text-sm">pnpm add @mmdev98/base-ui-plus</code>
+      <code className="font-mono text-sm">pnpm add @mmdev98/base-ui</code>
       <Clipboard.Trigger
         aria-label="Copy the install command"
         className="group relative flex size-8 cursor-pointer items-center justify-center rounded border-none bg-transparent p-0 text-inherit hover:bg-neutral-100 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-neutral-950 dark:hover:bg-neutral-800 dark:focus-visible:outline-white"

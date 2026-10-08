@@ -74,7 +74,7 @@ describe("Gallery.Root", () => {
     }
 
     expect(() => render(<Reader />)).toThrow(
-      "Base UI Plus: GalleryRootContext is missing.",
+      "Base UI: GalleryRootContext is missing.",
     );
     expect(() => render(<Gallery.Next />)).toThrow(
       "Gallery parts must be placed within <Gallery.Root>.",

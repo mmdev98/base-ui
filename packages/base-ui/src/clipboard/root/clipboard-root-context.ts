@@ -15,7 +15,7 @@ export function useClipboardRootContext(): ClipboardRootContextValue {
   const context = use(ClipboardRootContext);
   if (!context) {
     throw new Error(
-      "Base UI Plus: ClipboardRootContext is missing. " +
+      "Base UI: ClipboardRootContext is missing. " +
         "Clipboard parts must be placed within <Clipboard.Root>.",
     );
   }

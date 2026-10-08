@@ -1,6 +1,6 @@
 "use client";
 
-import { Clipboard } from "@mmdev98/base-ui-plus/clipboard";
+import { Clipboard } from "@mmdev98/base-ui/clipboard";
 import { cn } from "cn";
 import * as React from "react";
 import { CheckIcon, CopyIcon } from "./icons";
