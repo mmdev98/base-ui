@@ -2,6 +2,11 @@
   "name": "docs",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=12"
+  },
   "scripts": {
     "dev": "next dev --port 3005",
     "build": "next build",

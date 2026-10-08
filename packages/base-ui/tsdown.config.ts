@@ -18,6 +18,10 @@ function writePublishedPackageJson(): void {
   delete published.scripts;
   delete published.devDependencies;
   delete published.files;
+  // The pnpm and Node versions are for working on this repo, not for apps
+  // that install the package.
+  delete published.packageManager;
+  delete published.engines;
   if (Object.keys(publishConfig).length === 0) delete published.publishConfig;
 
   // Rewrite `./build/dialog/index.js` to `./dialog/index.js`.

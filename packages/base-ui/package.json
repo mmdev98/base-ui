@@ -19,6 +19,11 @@
   ],
   "type": "module",
   "sideEffects": false,
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=12"
+  },
   "files": [
     "build"
   ],
