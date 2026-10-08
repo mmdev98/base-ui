@@ -16,13 +16,13 @@ export function SiteHeader(props: { docs?: boolean }): React.ReactElement {
         </Link>
         <nav className="hidden items-center gap-5 font-mono text-[13px] text-muted md:flex">
           <Link href="/docs" className="hover:text-fg">
-            docs
+            Docs
           </Link>
           <Link href="/docs/components/gallery" className="hover:text-fg">
-            components
+            Components
           </Link>
           <Link href="/docs/base-ui" className="hover:text-fg">
-            base-ui
+            Base UI
           </Link>
         </nav>
         <div className="ml-auto flex items-center gap-2">
