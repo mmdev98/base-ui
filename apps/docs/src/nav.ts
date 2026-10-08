@@ -43,20 +43,20 @@ export const sections: DocSection[] = [
     title: "Components",
     pages: [
       {
-        slug: "components/clipboard",
-        title: "Clipboard",
-        description:
-          "A button that copies a value and shows that it was copied.",
-        file: "components/clipboard/index.mdx",
-        api: "clipboard",
-      },
-      {
         slug: "components/gallery",
         title: "Gallery",
         description:
           "Thumbnails that open a full-screen image viewer with mobile gestures.",
         file: "components/gallery/index.mdx",
         api: "gallery",
+      },
+      {
+        slug: "components/clipboard",
+        title: "Clipboard",
+        description:
+          "A button that copies a value and shows that it was copied.",
+        file: "components/clipboard/index.mdx",
+        api: "clipboard",
       },
     ],
   },
