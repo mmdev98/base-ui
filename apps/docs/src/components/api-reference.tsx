@@ -49,7 +49,7 @@ export function ApiReference(props: {
         <section key={type.name}>
           <HeadingAnchor level={3} id={getTypeAnchor(type.name)}>
             <span className="font-mono">{type.name}</span>
-            <span className="ml-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] font-normal tracking-wider text-faint uppercase">
+            <span className="ml-2 border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] font-normal tracking-wider text-faint uppercase">
               {type.kind === "enum" ? "enum" : "type"}
             </span>
           </HeadingAnchor>
@@ -90,7 +90,7 @@ function PropList(props: {
   return (
     <div>
       <ListTitle>{title}</ListTitle>
-      <dl className="rounded-lg border border-line">
+      <dl className="border border-line">
         {entries.map((prop) => (
           <div
             key={prop.name}
@@ -138,7 +138,7 @@ function AttributeList(props: {
   return (
     <div>
       <ListTitle>{title}</ListTitle>
-      <dl className="rounded-lg border border-line">
+      <dl className="border border-line">
         {attributes.map((attribute) => (
           <div
             key={attribute.name}

@@ -113,16 +113,16 @@ export function Search(): React.ReactElement {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger className="flex h-8 cursor-pointer items-center gap-2 rounded-md border border-line bg-panel pr-1.5 pl-2.5 text-sm text-faint transition-colors hover:border-line-strong hover:text-muted sm:w-56">
+      <Dialog.Trigger className="flex h-8 cursor-pointer items-center gap-2 border border-line bg-panel pr-1.5 pl-2.5 text-sm text-faint transition-colors hover:border-line-strong hover:text-muted sm:w-56">
         <SearchIcon />
         <span className="hidden sm:inline">Search docs</span>
-        <kbd className="ml-auto hidden rounded border border-line px-1.5 font-mono text-[10px] text-faint sm:inline">
+        <kbd className="ml-auto hidden border border-line px-1.5 font-mono text-[10px] text-faint sm:inline">
           Ctrl K
         </kbd>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-150 data-ending-style:opacity-0 data-starting-style:opacity-0" />
-        <Dialog.Popup className="fixed top-[12vh] left-1/2 flex max-h-[70vh] w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 flex-col overflow-hidden rounded-xl border border-line-strong bg-panel shadow-2xl shadow-black transition-[opacity,scale] duration-150 data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0">
+        <Dialog.Popup className="fixed top-[12vh] left-1/2 flex max-h-[70vh] w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 flex-col overflow-hidden border border-line-strong bg-panel shadow-2xl shadow-black transition-[opacity,scale] duration-150 data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0">
           <Dialog.Title className="sr-only">Search the docs</Dialog.Title>
           <div className="flex items-center gap-3 border-b border-line px-4">
             <SearchIcon className="shrink-0 text-faint" />
@@ -143,7 +143,7 @@ export function Search(): React.ReactElement {
               }
               className="h-12 w-full bg-transparent text-sm text-fg outline-none placeholder:text-faint"
             />
-            <kbd className="rounded border border-line px-1.5 font-mono text-[10px] text-faint">
+            <kbd className="border border-line px-1.5 font-mono text-[10px] text-faint">
               Esc
             </kbd>
           </div>
@@ -167,7 +167,7 @@ export function Search(): React.ReactElement {
                 aria-selected={index === active}
                 onMouseMove={() => setActive(index)}
                 onClick={() => go(entry)}
-                className="cursor-pointer rounded-lg px-3 py-2.5 aria-selected:bg-raised"
+                className="cursor-pointer px-3 py-2.5 aria-selected:bg-raised"
               >
                 <div className="flex items-baseline gap-2 text-sm">
                   <span className="font-mono text-xs text-faint">

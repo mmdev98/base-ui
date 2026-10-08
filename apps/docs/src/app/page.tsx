@@ -1,290 +1,203 @@
 import Link from "next/link";
 import * as React from "react";
-import { CodeBlock } from "@/components/code-block";
-import { ArrowRightIcon } from "@/components/icons";
-import { InstallCommand } from "@/components/install-command";
-import { Logo } from "@/components/logo";
+import { ArrowRightIcon, GitHubIcon } from "@/components/icons";
 import { SiteHeader } from "@/components/site-header";
 import { withBasePath } from "@/lib/base-path";
-import GalleryDemo from "@/content/components/gallery/demos/hero";
-import {
-  getBaseUiEntries,
-  getBaseUiVersion,
-  getLibraryVersion,
-} from "@/lib/library";
+import { getLibraryVersion } from "@/lib/library";
 import { getPageHref, sections, SITE } from "@/nav";
 
-const HERO_CODE = `import { Gallery } from "@mmdev98/base-ui/gallery";
-
-<Gallery.Root items={photos}>
-  {photos.map((photo, index) => (
-    <Gallery.Trigger key={photo.id} index={index}
-      className="data-popup-open:invisible">
-      <img src={photo.thumbnail} alt="" />
-    </Gallery.Trigger>
-  ))}
-  <Gallery.Portal>
-    <Gallery.Backdrop className="fixed inset-0 bg-black" />
-    <Gallery.Popup className="fixed inset-0">
-      <Gallery.Viewport className="absolute inset-0">
-        {(item, index) => (
-          <Gallery.Item index={index}>
-            <Gallery.Image />
-          </Gallery.Item>
-        )}
-      </Gallery.Viewport>
-    </Gallery.Popup>
-  </Gallery.Portal>
-</Gallery.Root>`;
-
-const FEATURES = [
+const PRINCIPLES = [
   {
-    title: "headless",
-    text: "No CSS ships with the package. Parts render plain elements; you style them with Tailwind, CSS Modules or anything else.",
+    key: "styles",
+    value: "none. Parts render plain elements; style them however you like.",
   },
   {
-    title: "accessible",
-    text: "Roles, ARIA, focus and keyboard handling are built into every part, following the WAI-ARIA patterns.",
+    key: "state",
+    value: "data-* attributes: data-open, data-copied, data-zoomed.",
   },
   {
-    title: "data-* state",
-    text: "State is exposed as attributes: data-copied, data-zoomed, data-pending. Style it with variants, not with props.",
+    key: "a11y",
+    value: "roles, ARIA, focus and keyboard, following WAI-ARIA patterns.",
   },
   {
-    title: "render prop",
-    text: "Swap any part's element or compose it with your own components. Props and handlers are merged, not lost.",
+    key: "render",
+    value: "every part takes a render prop; props and handlers are merged.",
   },
   {
-    title: "one base ui",
-    text: "Every Base UI component is re-exported from the same package, so there is one copy and the contexts line up.",
+    key: "base-ui",
+    value:
+      "every entry point re-exported, so there is one copy and one context.",
   },
   {
-    title: "rsc-friendly",
-    text: "Parts are client components; namespaces aren't. Import them in Server Components, tree-shaken by entry point.",
+    key: "rsc",
+    value: "parts are client components; namespaces import from the server.",
   },
 ];
 
 export default function HomePage(): React.ReactElement {
   const version = getLibraryVersion();
-  const baseUiEntries = getBaseUiEntries().filter((entry) => !entry.utility);
   const ownComponents =
     sections.find((section) => section.title === "Components")?.pages ?? [];
 
   return (
     <>
       <SiteHeader />
-      <main className="overflow-x-clip">
-        {/* Hero */}
-        <section className="relative border-b border-line">
-          <div
-            aria-hidden
-            className="bg-grid pointer-events-none absolute inset-0"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[48rem] max-w-full -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
-          />
-          <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-6 md:pt-28">
-            <Link
-              href="/docs"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-panel/80 py-1 pr-3 pl-1 font-mono text-xs text-muted backdrop-blur hover:border-line-strong hover:text-fg"
-            >
-              <span className="rounded-full bg-accent px-2 py-0.5 font-medium text-canvas">
-                v{version}
-              </span>
-              built on Base UI {getBaseUiVersion()}
-            </Link>
+      <div className="bg-hatch bg-fixed">
+        <main className="mx-auto max-w-7xl border-line bg-canvas px-4 md:border-x md:px-6">
+          {/* Hero */}
+          <section className="relative -mx-4 flex flex-col items-center border-b border-line px-4 pt-24 pb-24 text-center md:-mx-6 md:px-6 md:pt-36 md:pb-32">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_0%,rgb(255_255_255/0.06),transparent)]"
+            />
 
-            <h1 className="mt-8 max-w-4xl font-mono text-4xl leading-[1.1] font-semibold tracking-tighter text-fg sm:text-5xl md:text-6xl">
-              Headless primitives
-              <br />
-              <span className="text-muted">for the parts Base UI</span>{" "}
-              <span className="text-accent">doesn&apos;t ship.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-              Unstyled advanced React components for accessible interfaces,
-              built on Base UI.
+            <p className="relative inline-flex items-center gap-2 border border-line bg-panel py-1 pr-3 pl-2.5 font-mono text-xs text-muted">
+              <span className="relative flex size-1.5">
+                <span className="absolute inline-flex size-full animate-ping bg-accent opacity-60 motion-reduce:hidden" />
+                <span className="relative inline-flex size-1.5 bg-accent" />
+              </span>
+              in development
+              <span className="text-faint">v{version}</span>
             </p>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <h1 className="relative mt-8 max-w-4xl text-4xl leading-[1.08] font-semibold tracking-tighter text-balance text-fg sm:text-5xl md:text-6xl">
+              Unstyled advanced React components for accessible interfaces,{" "}
+              <span className="text-faint">built on Base&nbsp;UI.</span>
+            </h1>
+
+            <div className="relative mt-10 flex flex-wrap items-center justify-center gap-2.5">
               <Link
                 href="/docs/quick-start"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-accent px-5 font-mono text-sm font-medium text-canvas transition-colors hover:bg-accent/90"
+                className="inline-flex h-9 items-center justify-center gap-1.5 bg-fg px-4 text-sm font-medium text-canvas transition-colors hover:bg-white"
               >
-                get started <ArrowRightIcon />
+                Get started <ArrowRightIcon />
               </Link>
-              <div className="sm:w-[26rem]">
-                <InstallCommand command={`pnpm add ${SITE.packageName}`} />
-              </div>
+              <a
+                href={SITE.repository}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-9 items-center justify-center gap-1.5 border border-line px-4 text-sm text-fg transition-colors hover:border-line-strong hover:bg-panel"
+              >
+                <GitHubIcon width={13} height={13} /> GitHub
+              </a>
             </div>
-          </div>
-        </section>
 
-        {/* Code and live demo */}
-        <section className="border-b border-line">
-          <div className="mx-auto grid max-w-7xl md:grid-cols-2">
-            <div className="min-w-0 border-line px-4 py-12 md:border-r md:px-6 md:py-16">
-              <SectionLabel index="01">write the behaviour once</SectionLabel>
-              <h2 className="mt-3 font-mono text-2xl font-semibold tracking-tight">
-                Parts in, any design out.
-              </h2>
-              <p className="mt-3 max-w-md leading-7 text-muted">
-                Compose the parts you need and style them with your classes.
-                Swipe, pinch to zoom, drag to close and the keyboard come with
-                them.
-              </p>
-              <CodeBlock
-                code={HERO_CODE}
-                language="tsx"
-                title="gallery.tsx"
-                className="mb-0"
-              />
-            </div>
-            <div className="flex min-w-0 flex-col px-4 py-12 md:px-6 md:py-16">
-              <SectionLabel index="02">live</SectionLabel>
-              <h2 className="mt-3 font-mono text-2xl font-semibold tracking-tight">
-                Click a photo. Then swipe.
-              </h2>
-              <p className="mt-3 max-w-md leading-7 text-muted">
-                The image flies out of its thumbnail and back. On a phone, pinch
-                it, drag it down, or double tap.
-              </p>
-              <div className="bg-dots mt-6 flex flex-1 items-center justify-center rounded-lg border border-line bg-canvas p-8 md:min-h-80">
-                <GalleryDemo />
-              </div>
-            </div>
-          </div>
-        </section>
+            <Cross className="-bottom-[5px] -left-[5px]" />
+            <Cross className="-right-[5px] -bottom-[5px]" />
+          </section>
 
-        {/* Features */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
-            <SectionLabel index="03">principles</SectionLabel>
-            <h2 className="mt-3 max-w-xl font-mono text-2xl font-semibold tracking-tight md:text-3xl">
-              Behaviour and accessibility. Nothing else.
-            </h2>
-            <ul className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {FEATURES.map((feature, index) => (
-                <li
-                  key={feature.title}
-                  className="bg-canvas p-6 transition-colors hover:bg-panel"
+          {/* Principles */}
+          <section className="py-16 md:py-20">
+            <SectionLabel>principles</SectionLabel>
+            <dl className="mt-6 divide-y divide-line border-y border-line font-mono text-sm">
+              {PRINCIPLES.map((item) => (
+                <div
+                  key={item.key}
+                  className="grid gap-1 py-3 sm:grid-cols-[8rem_1fr] sm:gap-6"
                 >
-                  <p className="font-mono text-xs text-faint">
-                    {String(index + 1).padStart(2, "0")}
-                    <span className="text-accent"> /</span>
-                  </p>
-                  <h3 className="mt-3 font-mono text-sm font-medium text-fg">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    {feature.text}
-                  </p>
+                  <dt className="text-accent">{item.key}</dt>
+                  <dd className="text-muted">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {/* Components */}
+          <section className="pb-20 md:pb-28">
+            <SectionLabel>components</SectionLabel>
+            <ul className="mt-6 divide-y divide-line border-y border-line">
+              {ownComponents.map((page) => (
+                <li key={page.slug}>
+                  <Link
+                    href={getPageHref(page)}
+                    className="group grid gap-1 py-4 sm:grid-cols-[8rem_1fr_auto] sm:items-baseline sm:gap-6"
+                  >
+                    <span className="font-mono text-sm font-medium text-fg">
+                      {page.title}
+                    </span>
+                    <span className="text-sm text-muted">
+                      {page.description}
+                    </span>
+                    <code className="hidden font-mono text-sm text-faint group-hover:text-accent sm:block">
+                      {SITE.packageName}/{page.api}
+                    </code>
+                  </Link>
                 </li>
               ))}
             </ul>
+            <p className="mt-4 font-mono text-xs text-faint">
+              More primitives are on the way. Follow along on{" "}
+              <a
+                href={SITE.repository}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted underline decoration-line-strong underline-offset-4 hover:text-fg"
+              >
+                GitHub
+              </a>
+              .
+            </p>
+          </section>
+        </main>
+
+        <footer className="border-t border-line">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 border-line bg-canvas px-4 py-8 font-mono text-xs text-faint md:flex-row md:items-center md:border-x md:px-6">
+            <p>
+              MIT · built on{" "}
+              <a
+                href="https://base-ui.com"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-fg"
+              >
+                Base UI
+              </a>
+            </p>
+            <nav className="flex gap-5 text-muted md:ml-auto">
+              <Link href="/docs" className="hover:text-fg">
+                docs
+              </Link>
+              <a href={withBasePath("/llms.txt")} className="hover:text-fg">
+                llms.txt
+              </a>
+              <a
+                href={SITE.repository}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-fg"
+              >
+                github
+              </a>
+            </nav>
           </div>
-        </section>
-
-        {/* Components */}
-        <section className="border-b border-line">
-          <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24">
-            <SectionLabel index="04">components</SectionLabel>
-            <h2 className="mt-3 font-mono text-2xl font-semibold tracking-tight md:text-3xl">
-              What&apos;s in the box.
-            </h2>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {ownComponents.map((page) => (
-                <Link
-                  key={page.slug}
-                  href={getPageHref(page)}
-                  className="group flex flex-col gap-2 rounded-xl border border-line bg-panel p-6 transition-colors hover:border-accent/50"
-                >
-                  <span className="flex items-center justify-between">
-                    <span className="font-mono text-lg font-medium text-fg">
-                      {page.title}
-                    </span>
-                    <span className="rounded border border-accent/30 bg-accent-dim px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-accent uppercase">
-                      plus
-                    </span>
-                  </span>
-                  <span className="text-sm leading-6 text-muted">
-                    {page.description}
-                  </span>
-                  <span className="mt-2 flex items-center gap-1.5 font-mono text-xs text-faint group-hover:text-accent">
-                    read the docs <ArrowRightIcon />
-                  </span>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-10">
-              <p className="font-mono text-xs text-faint">
-                + {baseUiEntries.length} Base UI components, re-exported under
-                the same path
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {baseUiEntries.map((entry) => (
-                  <li key={entry.slug}>
-                    <a
-                      href={entry.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block rounded-md border border-line px-2.5 py-1 font-mono text-xs text-muted transition-colors hover:border-line-strong hover:text-fg"
-                    >
-                      {entry.slug}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 md:flex-row md:items-center md:px-6">
-          <Logo />
-          <p className="font-mono text-xs text-faint">
-            MIT licensed · built on{" "}
-            <a
-              href="https://base-ui.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-fg"
-            >
-              Base UI
-            </a>
-          </p>
-          <nav className="flex gap-5 font-mono text-xs text-muted md:ml-auto">
-            <Link href="/docs" className="hover:text-fg">
-              docs
-            </Link>
-            <a href={withBasePath("/llms.txt")} className="hover:text-fg">
-              llms.txt
-            </a>
-            <a
-              href={SITE.repository}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-fg"
-            >
-              github
-            </a>
-          </nav>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </>
   );
 }
 
+/** A `+` where a horizontal rule meets the side rails. */
+function Cross(props: { className: string }): React.ReactElement {
+  return (
+    <svg
+      aria-hidden
+      width="11"
+      height="11"
+      viewBox="0 0 11 11"
+      className={`absolute hidden text-line-strong md:block ${props.className}`}
+    >
+      <path d="M5.5 0v11M0 5.5h11" stroke="currentColor" />
+    </svg>
+  );
+}
+
 function SectionLabel(props: {
-  index: string;
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <p className="font-mono text-xs text-accent">
-      <span className="text-faint">[{props.index}]</span> {props.children}
-    </p>
+    <h2 className="font-mono text-xs text-faint">
+      {"// "}
+      {props.children}
+    </h2>
   );
 }

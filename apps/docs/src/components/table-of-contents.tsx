@@ -42,9 +42,7 @@ export function TableOfContents(props: {
 
   return (
     <nav aria-label="On this page">
-      <p className="mb-3 font-mono text-[11px] tracking-widest text-faint uppercase">
-        On this page
-      </p>
+      <p className="mb-3 font-mono text-xs text-faint">{"// on this page"}</p>
       <ul className="flex flex-col border-l border-line text-[13px]">
         {entries.map((entry) => (
           <li key={entry.id}>

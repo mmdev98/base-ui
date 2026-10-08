@@ -13,11 +13,12 @@ import {
   SITE,
   type DocPage,
 } from "@/nav";
+import { CopyButton } from "./copy-button";
 import { ExternalLinkIcon, GitHubIcon, MarkdownIcon } from "./icons";
 import { TableOfContents } from "./table-of-contents";
 
 const pageActionClass =
-  "group inline-flex items-center gap-2 rounded-md border border-line bg-panel px-3 py-1.5 text-sm text-muted transition-colors hover:border-line-strong hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex items-center gap-1.5 text-faint transition-colors hover:text-accent";
 
 export function getDocMetadata(slug: string): Metadata {
   const page = findPage(slug);
@@ -53,18 +54,59 @@ export async function DocPageView(props: {
         data-doc-content
         className="min-w-0 flex-1 pt-10 pb-24 md:pl-8 xl:pl-12"
       >
-        <p className="mb-3 font-mono text-xs text-accent">
-          {"// "}
+        <p className="mb-4 font-mono text-xs text-faint">
+          <Link href="/docs" className="hover:text-fg">
+            docs
+          </Link>
+          <span className="px-1.5 text-line-strong">/</span>
           {getSection(page).title.toLowerCase()}
+          {page.slug ? (
+            <>
+              <span className="px-1.5 text-line-strong">/</span>
+              <span className="text-accent">{page.slug.split("/").pop()}</span>
+            </>
+          ) : null}
         </p>
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-          <h1 className="font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
-            {page.title}
-          </h1>
-          <div className="flex flex-wrap gap-2">
+        <h1 className="font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+          {page.title}
+        </h1>
+        <p className="mt-3 max-w-2xl text-lg leading-8 text-muted">
+          {page.description}
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 border-y border-line py-3 font-mono text-xs">
+          {page.api ? (
+            <span className="flex min-w-0 items-center gap-1 text-muted">
+              <code className="truncate">
+                <span className="text-faint">import</span> {"{ "}
+                <span className="text-fg">{page.title}</span>
+                {" }"} <span className="text-faint">from</span>{" "}
+                <span className="text-accent">
+                  &quot;{SITE.packageName}/{page.api}&quot;
+                </span>
+              </code>
+              <CopyButton
+                value={`import { ${page.title} } from "${SITE.packageName}/${page.api}";`}
+                label="Copy the import"
+                className="size-6 shrink-0"
+              />
+            </span>
+          ) : null}
+          <span className="flex gap-4 sm:ml-auto">
+            {page.api ? (
+              <a
+                href={`${SITE.repository}/tree/main/packages/base-ui/src/${page.api}`}
+                target="_blank"
+                rel="noreferrer"
+                className={pageActionClass}
+              >
+                <GitHubIcon width={12} height={12} />
+                source
+              </a>
+            ) : null}
             <a href={getMarkdownHref(page)} className={pageActionClass}>
-              <MarkdownIcon className="text-faint group-hover:text-accent" />
-              View as Markdown
+              <MarkdownIcon />
+              markdown
             </a>
             <a
               href={`${SITE.repository}/blob/main/apps/docs/src/content/${page.file}`}
@@ -72,19 +114,11 @@ export async function DocPageView(props: {
               rel="noreferrer"
               className={pageActionClass}
             >
-              <GitHubIcon
-                width={14}
-                height={14}
-                className="text-faint group-hover:text-accent"
-              />
-              Edit on GitHub
-              <ExternalLinkIcon className="text-faint" />
+              edit
+              <ExternalLinkIcon />
             </a>
-          </div>
+          </span>
         </div>
-        <p className="mt-3 max-w-2xl text-lg leading-8 text-muted">
-          {page.description}
-        </p>
 
         <div className="mt-8">
           <Content />
@@ -97,7 +131,7 @@ export async function DocPageView(props: {
           {previous ? (
             <Link
               href={getPageHref(previous)}
-              className="rounded-lg border border-line px-4 py-3 hover:border-line-strong hover:bg-panel"
+              className="border border-line px-4 py-3 hover:border-line-strong hover:bg-panel"
             >
               <span className="block font-mono text-xs text-faint">
                 ← previous
@@ -110,7 +144,7 @@ export async function DocPageView(props: {
           {next ? (
             <Link
               href={getPageHref(next)}
-              className="rounded-lg border border-line px-4 py-3 text-right hover:border-line-strong hover:bg-panel"
+              className="border border-line px-4 py-3 text-right hover:border-line-strong hover:bg-panel"
             >
               <span className="block font-mono text-xs text-faint">next →</span>
               <span className="text-sm text-fg">{next.title}</span>

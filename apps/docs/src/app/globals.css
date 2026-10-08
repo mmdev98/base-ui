@@ -7,14 +7,14 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --color-canvas: #07080a;
-  --color-panel: #0d0f12;
-  --color-raised: #14171b;
-  --color-line: #1f2328;
-  --color-line-strong: #2d3238;
-  --color-fg: #e6e8eb;
-  --color-muted: #8a9099;
-  --color-faint: #5a6068;
+  --color-canvas: #080808;
+  --color-panel: #0e0e0e;
+  --color-raised: #161616;
+  --color-line: #222222;
+  --color-line-strong: #2f2f2f;
+  --color-fg: #e8e8e8;
+  --color-muted: #8f8f8f;
+  --color-faint: #5e5e5e;
   --color-accent: #4ade80;
   --color-accent-dim: #4ade8026;
 }
@@ -51,16 +51,12 @@
   counter-reset: line;
 }
 
-/* Square grid behind the landing hero, faded out at the edges. */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 0%,
-    #000 40%,
-    transparent 100%
+/* Diagonal lines in the gutters beside the content column; pair with `bg-fixed`. */
+.bg-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-line) 0 1px,
+    transparent 1px 10px
   );
 }
 

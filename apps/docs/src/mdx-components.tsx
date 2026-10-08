@@ -2,7 +2,6 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import * as React from "react";
 import { ApiReference } from "./components/api-reference";
-import { BaseUiComponents } from "./components/base-ui-components";
 import { CodeBlock } from "./components/code-block";
 import { Demo } from "./components/demo";
 import { HeadingAnchor } from "./components/heading-anchor";
@@ -16,7 +15,6 @@ type CodeElementProps = {
 const components: MDXComponents = {
   Demo,
   ApiReference,
-  BaseUiComponents,
   h1: (props) => (
     <h1
       className="font-mono text-3xl font-semibold tracking-tight"
@@ -75,7 +73,7 @@ const components: MDXComponents = {
     />
   ),
   table: (props) => (
-    <div className="my-6 overflow-x-auto rounded-lg border border-line">
+    <div className="my-6 overflow-x-auto border border-line">
       <table className="w-full border-collapse text-left text-sm" {...props} />
     </div>
   ),
@@ -93,7 +91,7 @@ const components: MDXComponents = {
   ),
   code: (props) => (
     <code
-      className="rounded border border-line bg-panel px-1.5 py-0.5 font-mono text-[0.85em] text-fg"
+      className="border border-line bg-panel px-1.5 py-0.5 font-mono text-[0.85em] text-fg"
       {...props}
     />
   ),

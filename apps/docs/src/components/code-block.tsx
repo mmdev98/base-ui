@@ -16,7 +16,7 @@ export async function CodeBlock(props: {
   return (
     <figure
       className={cn(
-        "group/code relative my-6 overflow-hidden rounded-lg border border-line bg-panel",
+        "group/code relative my-6 overflow-hidden border border-line bg-panel",
         className,
       )}
     >

@@ -12,7 +12,7 @@ export function InlineMarkdown(props: {
           return (
             <code
               key={index}
-              className="rounded bg-raised px-1 py-px font-mono text-[0.85em] text-fg"
+              className="bg-raised px-1 py-px font-mono text-[0.85em] text-fg"
             >
               {part.slice(1, -1)}
             </code>

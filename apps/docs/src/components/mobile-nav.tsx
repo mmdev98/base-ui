@@ -13,7 +13,7 @@ export function MobileNav(): React.ReactElement {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
         aria-label="Open navigation"
-        className="-ml-1.5 flex size-8 items-center justify-center rounded-md text-muted hover:bg-panel hover:text-fg md:hidden"
+        className="-ml-1.5 flex size-8 items-center justify-center text-muted hover:bg-panel hover:text-fg md:hidden"
       >
         <MenuIcon />
       </Dialog.Trigger>

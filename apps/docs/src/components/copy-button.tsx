@@ -17,7 +17,7 @@ export function CopyButton(props: {
       <Clipboard.Trigger
         aria-label={label}
         className={cn(
-          "group relative flex size-7 cursor-pointer items-center justify-center rounded-md text-muted transition-colors hover:bg-raised hover:text-fg data-copied:text-accent",
+          "group relative flex size-7 cursor-pointer items-center justify-center text-muted transition-colors hover:bg-raised hover:text-fg data-copied:text-accent",
           className,
         )}
       >

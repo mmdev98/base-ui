@@ -37,13 +37,6 @@ export const sections: DocSection[] = [
           "Install the package, render a primitive and style it with its data attributes.",
         file: "quick-start.mdx",
       },
-      {
-        slug: "base-ui",
-        title: "Base UI components",
-        description:
-          "Every Base UI entry point, re-exported under the same path.",
-        file: "base-ui.mdx",
-      },
     ],
   },
   {

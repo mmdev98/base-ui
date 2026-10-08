@@ -2,7 +2,7 @@ import "server-only";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import GithubSlugger from "github-slugger";
-import { getPageHref, SITE, type DocPage } from "@/nav";
+import { getPageHref, type DocPage } from "@/nav";
 import {
   getComponentApi,
   selectApiParts,
@@ -11,7 +11,6 @@ import {
   type ComponentApi,
 } from "./api";
 import { readDemoFiles } from "./demo-files";
-import { getBaseUiEntries } from "./library";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
 
@@ -112,15 +111,6 @@ function demoToMarkdown(
     .join("\n\n");
 }
 
-function baseUiToMarkdown(): string {
-  return getBaseUiEntries()
-    .map(
-      (entry) =>
-        `- [${entry.name}](${entry.url}): \`${SITE.packageName}/${entry.slug}\``,
-    )
-    .join("\n");
-}
-
 /** `<ApiReference component="gallery" parts={["Root", "Trigger"]} />`, `parts` optional. */
 const API_REFERENCE =
   /<ApiReference\s+component="([^"]+)"(?:\s+parts=\{\[([^\]]*)\]\})?\s*\/>/g;
@@ -140,17 +130,13 @@ export function getPageMarkdown(page: DocPage): string {
         ? segment
         : segment
             // Drop other components first, so the code the next steps insert stays whole.
-            .replace(
-              /<(?!Demo\b|ApiReference\b|BaseUiComponents\b)[A-Z]\w*[^>]*\/>/g,
-              "",
-            )
+            .replace(/<(?!Demo\b|ApiReference\b)[A-Z]\w*[^>]*\/>/g, "")
             .replace(/<Demo\s+src="([^"]+)"\s*\/>/g, (_, src: string) =>
               demoToMarkdown(page, src, printed),
             )
             .replace(API_REFERENCE, (_, component: string, order?: string) =>
               apiToMarkdown(getComponentApi(component), parsePartNames(order)),
-            )
-            .replace(/<BaseUiComponents\s*\/>/g, baseUiToMarkdown),
+            ),
     )
     .join("")
     .replace(/\n{3,}/g, "\n\n")
