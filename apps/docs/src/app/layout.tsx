@@ -8,8 +8,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE.name} — unstyled React components`,
-    template: `%s · ${SITE.name}`,
+    default: `Unstyled React components for accessible interfaces - ${SITE.name}`,
+    template: `%s - ${SITE.name}`,
   },
   description:
     "Unstyled React components for accessible interfaces, built on Base UI.",
