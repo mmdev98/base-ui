@@ -1,15 +1,8 @@
-# base-ui-plus
+# Base UI Plus
 
-Monorepo for [`@mmdev98/base-ui-plus`](./packages/base-ui-plus), headless React primitives built on Base UI.
+Base UI Plus is a library of unstyled React components for accessible interfaces, built on
+[Base UI](https://base-ui.com). It includes every Base UI component, plus the ones Base UI doesn't have.
 
-- `packages/base-ui-plus`: the published library
-- `apps/playground`: Vite app for trying the primitives
+## Documentation
 
-```sh
-pnpm install
-pnpm dev        # playground
-pnpm test
-pnpm build
-```
-
-See [AGENTS.md](./AGENTS.md) for conventions.
+To get started, check out the [Base UI Plus documentation](https://mmdev98.github.io/base-ui-plus/).
