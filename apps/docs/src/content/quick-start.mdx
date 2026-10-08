@@ -3,9 +3,17 @@
 Install the package. React 19 is a peer dependency. Don't add `@base-ui/react` yourself:
 this package brings the version it was built with.
 
-```bash
-pnpm add @mmdev98/base-ui
-```
+<InstallCommand package="@mmdev98/base-ui" />
+
+### Install it as `@base-ui/react`
+
+To move an app that already uses Base UI, install the package under the `@base-ui/react`
+name with an `npm:` alias. Your imports (`@base-ui/react/dialog`) stay the same and now
+resolve to this package, so the extra primitives come with them:
+
+<InstallCommand package="@mmdev98/base-ui" alias="@base-ui/react" />
+
+Replace the existing `@base-ui/react` entry. Don't keep both.
 
 ## Set up the portal root
 

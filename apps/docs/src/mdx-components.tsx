@@ -5,6 +5,7 @@ import { ApiReference } from "./components/api-reference";
 import { CodeBlock } from "./components/code-block";
 import { Demo } from "./components/demo";
 import { HeadingAnchor } from "./components/heading-anchor";
+import { InstallCommand } from "./components/install-command";
 
 type CodeElementProps = {
   className?: string;
@@ -15,6 +16,7 @@ type CodeElementProps = {
 const components: MDXComponents = {
   Demo,
   ApiReference,
+  InstallCommand,
   h1: (props) => (
     <h1
       className="font-mono text-3xl font-semibold tracking-tight"

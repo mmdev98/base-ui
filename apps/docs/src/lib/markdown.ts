@@ -11,13 +11,15 @@ import {
   type ComponentApi,
 } from "./api";
 import { readDemoFiles } from "./demo-files";
+import { getInstallCommands } from "./install";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
 
 /**
  * Plain Markdown versions of the pages, for llms.txt and the search index.
  * The MDX source is rewritten with string replacements: demos become code
- * fences, `<ApiReference>` becomes tables, other components are dropped.
+ * fences, `<ApiReference>` becomes tables, `<InstallCommand>` becomes one
+ * command per package manager, other components are dropped.
  */
 
 export function getPageSource(page: DocPage): string {
@@ -115,6 +117,17 @@ function demoToMarkdown(
 const API_REFERENCE =
   /<ApiReference\s+component="([^"]+)"(?:\s+parts=\{\[([^\]]*)\]\})?\s*\/>/g;
 
+/** `<InstallCommand package="@mmdev98/base-ui" alias="@base-ui/react" />`, `alias` optional. */
+const INSTALL_COMMAND =
+  /<InstallCommand\s+package="([^"]+)"(?:\s+alias="([^"]+)")?\s*\/>/g;
+
+function installToMarkdown(packageName: string, alias?: string): string {
+  const lines = getInstallCommands(packageName, alias).map(
+    (entry) => entry.command,
+  );
+  return `\`\`\`bash\n${lines.join("\n")}\n\`\`\``;
+}
+
 function parsePartNames(list: string | undefined): string[] | undefined {
   return list?.match(/"(\w+)"/g)?.map((name) => name.slice(1, -1));
 }
@@ -130,7 +143,15 @@ export function getPageMarkdown(page: DocPage): string {
         ? segment
         : segment
             // Drop other components first, so the code the next steps insert stays whole.
-            .replace(/<(?!Demo\b|ApiReference\b)[A-Z]\w*[^>]*\/>/g, "")
+            .replace(
+              /<(?!Demo\b|ApiReference\b|InstallCommand\b)[A-Z]\w*[^>]*\/>/g,
+              "",
+            )
+            .replace(
+              INSTALL_COMMAND,
+              (_, packageName: string, alias?: string) =>
+                installToMarkdown(packageName, alias),
+            )
             .replace(/<Demo\s+src="([^"]+)"\s*\/>/g, (_, src: string) =>
               demoToMarkdown(page, src, printed),
             )
