@@ -1,6 +1,6 @@
 # @mmdev98/base-ui
 
-Unstyled React components for accessible interfaces, built on [Base UI](https://base-ui.com).
+Unstyled React components for accessible interfaces.
 
 Not affiliated with MUI or the Base UI team.
 

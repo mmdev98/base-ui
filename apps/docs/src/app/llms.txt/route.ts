@@ -9,9 +9,8 @@ export function GET(): Response {
   const body = [
     `# ${SITE.name}`,
     "",
-    `> Unstyled React components for accessible interfaces, built on Base UI ` +
-      `(\`${SITE.packageName}@${getLibraryVersion()}\`). Every Base UI component is re-exported ` +
-      "under the same path, plus components Base UI doesn't have. State is exposed as `data-*` attributes.",
+    `> Unstyled React components for accessible interfaces ` +
+      `(\`${SITE.packageName}@${getLibraryVersion()}\`).`,
     "",
     ...sections.flatMap((section) => [
       `## ${section.title}`,

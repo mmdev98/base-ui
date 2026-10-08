@@ -26,8 +26,7 @@ export const sections: DocSection[] = [
       {
         slug: "",
         title: "Introduction",
-        description:
-          "Unstyled React components for accessible interfaces, built on Base UI.",
+        description: "Unstyled React components for accessible interfaces.",
         file: "introduction.mdx",
       },
       {

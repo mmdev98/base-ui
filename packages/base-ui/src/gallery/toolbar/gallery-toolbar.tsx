@@ -12,8 +12,7 @@ export type GalleryToolbarProps = ToolbarRootProps;
 /**
  * Groups the viewer's actions. Arrow keys move between them, and the actions
  * inside (`Gallery.Previous`, `Gallery.ZoomIn`, `Gallery.Download` …) become
- * its buttons and links, disabled ones staying focusable. Built on Base UI's
- * `Toolbar.Root`. Renders a `<div>` element.
+ * its buttons and links, disabled ones staying focusable.
  */
 export function GalleryToolbar(props: GalleryToolbarProps): React.ReactElement {
   const { orientation = "horizontal" } = props;

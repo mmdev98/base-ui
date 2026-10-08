@@ -1,7 +1,7 @@
 {
   "name": "@mmdev98/base-ui",
   "version": "0.1.0",
-  "description": "Unstyled advanced React components for accessible interfaces, built on Base UI.",
+  "description": "Unstyled advanced React components for accessible interfaces.",
   "license": "MIT",
   "author": "Mohammad Moradi <mmdev98@gmail.com>",
   "repository": {

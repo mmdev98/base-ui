@@ -61,8 +61,7 @@ export default function HomePage(): React.ReactElement {
             </p>
 
             <h1 className="relative mt-8 max-w-4xl text-4xl leading-[1.08] font-semibold tracking-tighter text-balance text-fg sm:text-5xl md:text-6xl">
-              Unstyled advanced React components for accessible interfaces,{" "}
-              <span className="text-faint">built on Base&nbsp;UI.</span>
+              Unstyled advanced React components for accessible interfaces.
             </h1>
 
             <div className="relative mt-10 flex flex-wrap items-center justify-center gap-2.5">
@@ -142,17 +141,7 @@ export default function HomePage(): React.ReactElement {
 
         <footer className="border-t border-line">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 border-line bg-canvas px-4 py-8 font-mono text-xs text-faint md:flex-row md:items-center md:border-x md:px-6">
-            <p>
-              MIT · built on{" "}
-              <a
-                href="https://base-ui.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-fg"
-              >
-                Base UI
-              </a>
-            </p>
+            <p>MIT</p>
             <nav className="flex gap-5 text-muted md:ml-auto">
               <Link href="/docs" className="hover:text-fg">
                 docs

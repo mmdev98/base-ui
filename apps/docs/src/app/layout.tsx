@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     default: `Unstyled React components for accessible interfaces - ${SITE.name}`,
     template: `%s - ${SITE.name}`,
   },
-  description:
-    "Unstyled React components for accessible interfaces, built on Base UI.",
+  description: "Unstyled React components for accessible interfaces.",
   icons: {
     icon: [
       { url: withBasePath("/favicon.ico"), sizes: "32x32" },
