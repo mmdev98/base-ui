@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     "Unstyled React components for accessible interfaces, built on Base UI.",
   icons: {
     icon: [
+      { url: withBasePath("/favicon.ico"), sizes: "32x32" },
       { url: withBasePath("/favicon.svg"), type: "image/svg+xml" },
-      { url: withBasePath("/favicon.ico"), sizes: "any" },
     ],
     apple: withBasePath("/apple-touch-icon.png"),
   },
