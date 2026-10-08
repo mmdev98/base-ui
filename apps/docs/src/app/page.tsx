@@ -102,9 +102,8 @@ export default function HomePage(): React.ReactElement {
               <span className="text-accent">doesn&apos;t ship.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-              Every Base UI component, plus a gallery with mobile gestures, a
-              clipboard and more. Unstyled, accessible, and built on the same
-              API, so it all fits together.
+              Unstyled advanced React components for accessible interfaces,
+              built on Base UI.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
