@@ -1,89 +1,118 @@
-import * as React from 'react';
-import clsx from 'clsx';
-import * as CodeBlock from './components/CodeBlock';
-import * as Table from './components/Table';
-import * as QuickNav from './components/QuickNav/QuickNav';
-import { Code } from './components/Code';
-import { Link } from './components/Link';
-import { HeadingLink } from './components/HeadingLink';
-import { Subtitle } from './components/Subtitle/Subtitle';
-import { TypeRef } from './components/TypeRef';
-import { TypePropRef } from './components/TypePropRef';
-import { Kbd } from './components/Kbd/Kbd';
-import { CodeBlockPreComputed } from './components/CodeBlock/CodeBlockPreComputed';
-import './css/mdx-components.css';
+import type { MDXComponents } from "mdx/types";
+import Link from "next/link";
+import * as React from "react";
+import { ApiReference } from "./components/api-reference";
+import { BaseUiComponents } from "./components/base-ui-components";
+import { CodeBlock } from "./components/code-block";
+import { Demo } from "./components/demo";
+import { HeadingAnchor } from "./components/heading-anchor";
 
-interface MDXComponents {
-  [key: string]: React.FC<any> | MDXComponents;
-}
+type CodeElementProps = {
+  className?: string;
+  children?: React.ReactNode;
+  "data-meta"?: string;
+};
 
-// Maintain spacing between MDX components here
-export const mdxComponents: MDXComponents = {
-  a: Link,
-  em: (props) => <em className="MdEm" {...props} />,
-  code: (props) => <Code {...props} className={clsx('MdCode', props.className)} />,
+const components: MDXComponents = {
+  Demo,
+  ApiReference,
+  BaseUiComponents,
   h1: (props) => (
-    // Do not wrap heading tags in divs, that confuses Safari Reader
-    <h1 className="MdH1" {...props} />
+    <h1
+      className="font-mono text-3xl font-semibold tracking-tight"
+      {...props}
+    />
   ),
-  h2: ({ children, id, ...otherProps }) => {
-    return (
-      <h2 className="MdH2" id={id} {...otherProps}>
-        <HeadingLink id={id}>{children}</HeadingLink>
-      </h2>
+  h2: ({ id, children }) => (
+    <HeadingAnchor level={2} id={id}>
+      {children}
+    </HeadingAnchor>
+  ),
+  h3: ({ id, children }) => (
+    <HeadingAnchor level={3} id={id}>
+      {children}
+    </HeadingAnchor>
+  ),
+  h4: ({ id, children }) => (
+    <HeadingAnchor level={4} id={id}>
+      {children}
+    </HeadingAnchor>
+  ),
+  p: (props) => <p className="my-4 leading-7 text-muted" {...props} />,
+  a: ({ href = "", ...props }) => {
+    const className =
+      "text-fg underline decoration-line-strong underline-offset-4 hover:decoration-accent";
+    return href.startsWith("/") || href.startsWith("#") ? (
+      <Link href={href} className={className} {...props} />
+    ) : (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={className}
+        {...props}
+      />
     );
   },
-  h3: ({ children, id, ...otherProps }) => {
+  strong: (props) => <strong className="font-medium text-fg" {...props} />,
+  ul: (props) => (
+    <ul
+      className="my-4 list-disc space-y-2 pl-5 leading-7 text-muted marker:text-faint"
+      {...props}
+    />
+  ),
+  ol: (props) => (
+    <ol
+      className="my-4 list-decimal space-y-2 pl-5 leading-7 text-muted marker:text-faint"
+      {...props}
+    />
+  ),
+  hr: () => <hr className="my-10 border-line" />,
+  blockquote: (props) => (
+    <blockquote
+      className="my-6 border-l-2 border-accent pl-4 text-muted [&>p]:my-2"
+      {...props}
+    />
+  ),
+  table: (props) => (
+    <div className="my-6 overflow-x-auto rounded-lg border border-line">
+      <table className="w-full border-collapse text-left text-sm" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="border-b border-line bg-panel px-4 py-2.5 font-mono text-xs font-medium text-muted"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td
+      className="border-t border-line px-4 py-2.5 text-muted first:text-fg"
+      {...props}
+    />
+  ),
+  code: (props) => (
+    <code
+      className="rounded border border-line bg-panel px-1.5 py-0.5 font-mono text-[0.85em] text-fg"
+      {...props}
+    />
+  ),
+  pre: ({ children }) => {
+    const code = React.isValidElement<CodeElementProps>(children)
+      ? children.props
+      : {};
+    const language = code.className?.match(/language-(\w+)/)?.[1];
+    const title = code["data-meta"]?.match(/title="([^"]+)"/)?.[1];
     return (
-      <h3 className="MdH3" id={id} {...otherProps}>
-        <HeadingLink id={id}>{children}</HeadingLink>
-      </h3>
+      <CodeBlock
+        code={String(code.children ?? "")}
+        language={language}
+        title={title}
+      />
     );
   },
-  h4: (props) => <h4 className="MdH4" {...props} />,
-  h5: (props) => <h5 className="MdH5" {...props} />,
-  h6: (props) => <h6 className="MdH6" {...props} />,
-  p: (props) => <p className="MdP" {...props} />,
-  li: (props) => <li className="MdListItem" {...props} />,
-  ul: (props) => <ul className="MdUl" {...props} />,
-  ol: (props) => <ol className="MdOl" {...props} />,
-  kbd: Kbd,
-  figure: (props) => <figure className="MdFigure" {...props} />,
-  pre: ({ tabIndex, ...props }) => {
-    if ('data-precompute' in props) {
-      return (
-        <CodeBlock.Root className="MdFigure">
-          <CodeBlockPreComputed {...props} />
-        </CodeBlock.Root>
-      );
-    }
-
-    return <CodeBlock.Pre {...props} />;
-  },
-  table: (props) => <Table.Root className="MdTable" {...props} />,
-  thead: Table.Head,
-  tbody: Table.Body,
-  tr: Table.Row,
-  th: (props: React.ComponentProps<'th'>) =>
-    props.scope === 'row' ? <Table.RowHeader {...props} /> : <Table.ColumnHeader {...props} />,
-  td: Table.Cell,
-  // Custom components
-  TypeRef,
-  TypePropRef,
-  QuickNav,
-  Meta: (props: React.ComponentProps<'meta'>) => {
-    if (props.name === 'description' && String(props.content).length > 170) {
-      throw new Error("Meta description shouldn't be longer than 170 chars");
-    }
-    // At build time, `transformMarkdownMetadata` extracts <Meta> attributes
-    // and injects them as `export const metadata = { ... }` into the compiled
-    // MDX. Next.js picks that export up and emits the <meta> tag itself, so
-    // rendering one here would produce a duplicate.
-    return null;
-  },
-  Subtitle: (props) => <Subtitle {...props} />,
 };
 
 export function useMDXComponents(): MDXComponents {
-  return mdxComponents;
+  return components;
 }

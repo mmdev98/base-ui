@@ -1,0 +1,21 @@
+Each Base UI entry point is re-exported unchanged under the same path: `@base-ui/react/dialog`
+becomes `@mmdev98/base-ui-plus/dialog`. Their docs live on [base-ui.com](https://base-ui.com),
+for the exact version this package pins.
+
+```tsx title="Before and after"
+// Before
+import { Dialog } from "@base-ui/react/dialog";
+
+// After
+import { Dialog } from "@mmdev98/base-ui-plus/dialog";
+```
+
+## Entry points
+
+<BaseUiComponents />
+
+## Utilities
+
+`@mmdev98/base-ui-plus/utils` re-exports the hooks and helpers from `@base-ui/utils` that the
+primitives here are built on, such as `useControlled`, `useStableCallback` and `useTimeout`, so
+your own components can use them too.

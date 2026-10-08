@@ -1,0 +1,36 @@
+Base UI Plus is a library of **headless React primitives**. The components handle behaviour and
+accessibility (state, keyboard, focus, ARIA) and render no styles: you bring the CSS.
+
+It has two layers:
+
+- **Every Base UI component**, re-exported under the same path. `@mmdev98/base-ui-plus/dialog` is
+  Base UI's dialog, so the [Base UI docs](https://base-ui.com) apply as they are.
+- **Primitives Base UI doesn't have**, such as the [Gallery](/docs/components/gallery) and the
+  [Clipboard](/docs/components/clipboard). They follow Base UI's API, so they work the same way.
+
+## Why one package
+
+Apps install only `@mmdev98/base-ui-plus`. It pins one version of Base UI, so the extra primitives
+and the Base UI components always share the same copy of it, and their contexts work together.
+
+```bash
+pnpm add @mmdev98/base-ui-plus
+```
+
+## Same API as Base UI
+
+Every primitive here feels like a Base UI component:
+
+- **Parts.** A component is a namespace of parts: `<Clipboard.Root>`, `<Clipboard.Trigger>`. Each
+  part renders one element and takes its usual HTML props.
+- **`render` prop.** Swap the element or compose another component:
+  `<Gallery.Next render={<Toolbar.Button />} />`.
+- **`data-*` state.** State shows up as attributes (`data-copied`, `data-zoomed`), so you style it
+  with CSS or Tailwind variants: `data-copied:text-green-500`.
+- **Controlled or not.** Values come as `value` / `defaultValue` / `onValueChange`, named after
+  the value: `open` / `defaultOpen` / `onOpenChange`.
+
+## Server Components
+
+Every part, context and hook file starts with `"use client"`, and the namespaces don't, so you
+can import `Gallery` from a Server Component and render its parts there.

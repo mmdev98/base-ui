@@ -5,6 +5,4 @@ packages:
 allowBuilds:
   "@swc/core": true
   esbuild: true
-
-patchedDependencies:
-  "@mui/internal-docs-infra@0.12.1-canary.42": patches/@mui__internal-docs-infra@0.12.1-canary.42.patch
+  sharp: true

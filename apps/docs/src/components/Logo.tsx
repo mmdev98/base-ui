@@ -1,19 +1,19 @@
-import * as React from 'react';
+import * as React from "react";
 
-/** Wordmark of Base UI Plus: plain text, so it follows the header's colour. */
-export function Logo(props: React.ComponentProps<'svg'>) {
+export function Logo(): React.ReactElement {
   return (
-    <svg width="104" height="24" viewBox="0 0 104 24" fill="currentColor" {...props}>
-      <text
-        x="0"
-        y="17"
-        fontFamily="inherit"
-        fontSize="16"
-        fontWeight="700"
-        letterSpacing="-0.02em"
+    <span className="flex items-center gap-2 font-mono text-sm font-medium tracking-tight">
+      <span
+        aria-hidden
+        className="flex size-6 items-center justify-center rounded-md border border-line-strong bg-panel text-accent"
       >
-        Base UI Plus
-      </text>
-    </svg>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M6 1v10M1 6h10" stroke="currentColor" strokeWidth="2" />
+        </svg>
+      </span>
+      <span>
+        base-ui<span className="text-accent">+</span>
+      </span>
+    </span>
   );
 }
