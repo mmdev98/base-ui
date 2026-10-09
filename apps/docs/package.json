@@ -19,6 +19,7 @@
     "@mmdev98/base-ui": "workspace:*",
     "@next/mdx": "^16.4.0",
     "@tanstack/react-form": "^1.33.5",
+    "@tanstack/react-virtual": "^3.14.13",
     "cn": "^0.4.0",
     "geist": "^1.7.2",
     "github-slugger": "^2.0.0",
