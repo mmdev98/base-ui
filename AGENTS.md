@@ -109,27 +109,27 @@ everything else to follow these rules, including code the app marks as legacy.
 
 The layout follows Base UI (`packages/react/src/slider` in the fork), with kebab-case names. One
 folder per entry point, named after the component, and in it **one folder per part**, named after
-the part. `src/clipboard` is the small reference, `src/gallery` the large one.
+the part. `src/clipboard` is the small reference, `src/lightbox` the large one.
 
 ```text
-src/gallery/
+src/lightbox/
 ├── root/
-│   ├── gallery-root.tsx                    the part
-│   ├── gallery-root.test.tsx               its tests
-│   ├── gallery-root-context.ts             the context it provides
-│   └── use-gallery-zoom.ts                 a hook only this part uses
+│   ├── lightbox-root.tsx                   the part
+│   ├── lightbox-root.test.tsx              its tests
+│   ├── lightbox-root-context.ts            the context it provides
+│   └── use-lightbox-zoom.ts                a hook only this part uses
 ├── popup/
-│   ├── gallery-popup.tsx
-│   ├── gallery-popup.test.tsx
-│   ├── gallery-popup-data-attributes.ts    its `data-*` attributes, documented
-│   └── gallery-popup-css-vars.ts           the CSS variables it sets, documented
+│   ├── lightbox-popup.tsx
+│   ├── lightbox-popup.test.tsx
+│   ├── lightbox-popup-data-attributes.ts   its `data-*` attributes, documented
+│   └── lightbox-popup-css-vars.ts          the CSS variables it sets, documented
 ├── trigger/ viewport/ item/ image/ …       one folder per part, same shape
 ├── utils/
-│   ├── gallery-geometry.ts                 pure helpers, grouped by topic
-│   └── gallery-geometry.test.ts
-├── constants.ts                            GALLERY_ZOOM_SCALE …
+│   ├── lightbox-geometry.ts                pure helpers, grouped by topic
+│   └── lightbox-geometry.test.ts
+├── constants.ts                            LIGHTBOX_ZOOM_SCALE …
 ├── types.ts                                value types and enums shared by the parts
-├── use-gallery-action.tsx                  hooks shared by several parts
+├── use-lightbox-action.tsx                 hooks shared by several parts
 ├── test-utils.tsx                          test helpers shared by the part tests
 ├── index.parts.ts                          parts under their short names
 └── index.ts                                namespace + full names, hooks, types, constants
@@ -138,12 +138,12 @@ src/gallery/
 - A part's folder holds everything that belongs to that part only: its file, test, context, data
   attributes, CSS variables and private hooks. Files shared by several parts sit at the component
   root; pure helpers go in `utils/`.
-- Import across part folders by exact path (`../root/gallery-root-context`), never through `index.ts`.
+- Import across part folders by exact path (`../root/lightbox-root-context`), never through `index.ts`.
 - `index.parts.ts` re-exports the parts under their short names (`export { ClipboardRoot as Root }`).
 - `index.ts` exports the namespace first (`export * as Clipboard from "./index.parts"`), then the full
   names, context hooks, value types, props types, state types, enums and constants, and the data
   attribute and CSS variable docs as namespaces
-  (`export * as GalleryPopupDataAttributes from "./popup/gallery-popup-data-attributes"`). Hooks and
+  (`export * as LightboxPopupDataAttributes from "./popup/lightbox-popup-data-attributes"`). Hooks and
   types are never namespace members: `useClipboardRootContext`, not `Clipboard.useRootContext`.
 - Add the folder to `src/index.ts` (`export * from "./clipboard"`), then run `pnpm generate:exports`.
 - Put `"use client"` at the top of every part, context and hook file, not in `index.ts` or
@@ -167,16 +167,16 @@ one noun from the Base UI vocabulary, so the same word means the same role every
 | `Group`, `Separator`              | Grouping and dividers                                               |
 | `Preset`                          | Ready-made composition of the parts (our addition)                  |
 
-Add a domain noun only when no Base UI word fits (`Gallery.Viewer`, `Gallery.Thumbnails`,
-`Gallery.ZoomIn`). A component with a single part stays a plain export (`ZoomPan`), with no namespace.
+Add a domain noun only when no Base UI word fits (`Lightbox.Thumbnails`, `Lightbox.ZoomIn`,
+`Lightbox.Fallback`). A component with a single part stays a plain export (`ZoomPan`), with no namespace.
 
 A `Preset` composes the parts for the common case so the caller writes one element instead of five.
 It stays headless like every part, and the parts remain the way to build anything it doesn't cover.
 
 ### Names and types
 
-- The component is `<Component><Part>` (`ClipboardRoot`, `GalleryZoomIn`) in
-  `<part>/<component>-<part>.tsx` (`zoom-in/gallery-zoom-in.tsx`), one part per file like Base UI.
+- The component is `<Component><Part>` (`ClipboardRoot`, `LightboxZoomIn`) in
+  `<part>/<component>-<part>.tsx` (`zoom-in/lightbox-zoom-in.tsx`), one part per file like Base UI.
 - Props are `<Component><Part>Props`; build them on Base UI's helper:
   `interface ClipboardRootProps extends useRender.ComponentProps<"div", ClipboardRootState>`.
   Use a `type` alias instead of an empty `interface … extends`.
@@ -218,10 +218,9 @@ It stays headless like every part, and the parts remain the way to build anythin
 - Every part accepts `render` (an element or a function `(props, state) => element`) so the caller
   can change the element or compose another component. To combine a part with another component's
   part, put the part that owns the behaviour outside:
-  `<Gallery.Next render={<Toolbar.Button />} />`, not `<Toolbar.Button render={<Gallery.Next />} />`.
-  The outer part's props are merged last, so the inner one would lose its `disabled`. When a
-  component has its own container part, let it do this for its children: inside `Gallery.Toolbar`,
-  the actions render as Base UI toolbar buttons themselves.
+  `<Lightbox.Next render={<Toolbar.Button />} />`, not `<Toolbar.Button render={<Lightbox.Next />} />`.
+  The outer part's props are merged last, so the inner one would lose its `disabled`. Don't add
+  a container part that only wraps a Base UI one (a `Lightbox.Toolbar`): compose Base UI's.
 - Inline styles are allowed only where the behaviour needs them: positions and transforms written
   by a gesture, `touch-action`, `overflow` that clips a zoomed image. Never set a size, colour or
   position the app could choose. Leave layout (`position: absolute; inset: 0`) to the app's CSS.
@@ -248,12 +247,12 @@ It stays headless like every part, and the parts remain the way to build anythin
   React Compiler). Like Base UI: `useStableCallback` for functions called from effects and event
   handlers, `React.useCallback` for functions called during render (such as a ref callback).
 - Put values that change every frame (pointer position, zoom level) in a second context named
-  after what it holds (`GalleryRootZoomContext`), so parts that don't need them don't re-render.
+  after what it holds (`LightboxRootZoomContext`), so parts that don't need them don't re-render.
   Put stable callbacks in `<Component><Part>ActionsContext` when many parts only need those.
 - Export the hook and the value type. Export the context itself only when another file has to
   provide it.
 - A hook is `use<Component><Purpose>` in `use-<component>-<purpose>.ts`, one exported hook per file
-  (`use-gallery-element-ref.ts` exports `useGalleryElementRef`). It lives in the folder of the
+  (`use-lightbox-element-ref.ts` exports `useLightboxElementRef`). It lives in the folder of the
   component that uses it.
 - Its options object is `Use<Hook>Options` and its named return type `Use<Hook>Result`. Positional
   arguments are fine for one or two values.
@@ -262,9 +261,9 @@ It stays headless like every part, and the parts remain the way to build anythin
 
 ### Utils
 
-Pure, single-purpose functions named `<verb><Component><Purpose>` (`clampGalleryZoom`,
-`getGalleryItemIndex`), in the component's `utils/` folder, grouped in files by topic
-(`gallery-geometry.ts`) with a test file next to each. Booleans start with `is`, `has`, `can` or
+Pure, single-purpose functions named `<verb><Component><Purpose>` (`clampLightboxZoom`,
+`getLightboxItemIndex`), in the component's `utils/` folder, grouped in files by topic
+(`lightbox-geometry.ts`) with a test file next to each. Booleans start with `is`, `has`, `can` or
 `should`.
 
 - Use the browser through Base UI's helpers, as Base UI does: `useTimeout` / `Timeout` instead of
@@ -278,8 +277,8 @@ Every error a part throws says what happened, why it's a problem and how to fix 
 
 ```ts
 throw new Error(
-  "Base UI: GalleryRootContext is missing. " +
-    "Gallery parts must be placed within <Gallery.Root>.",
+  "Base UI: LightboxRootContext is missing. " +
+    "Lightbox parts must be placed within <Lightbox.Root>.",
 );
 ```
 
@@ -333,7 +332,7 @@ are tried by hand: there is no separate playground.
 - **Demos.** Write `<Demo src="./demos/grid.tsx" />`. The `remark-demos` plugin
   (`src/pipeline`) imports the file and passes its path. `Demo` renders it and shows its source and
   the local files it imports, highlighted with Shiki at render time.
-- **API tables.** Write `<ApiReference component="gallery" parts={["Root", "Trigger"]} />` on one line
+- **API tables.** Write `<ApiReference component="lightbox" parts={["Root", "Trigger"]} />` on one line
   (`parts` is optional and sets the order). `src/lib/api.ts` reads the parts, their props and JSDoc,
   the `*-data-attributes.ts` and `*-css-vars.ts` files next to each part, and the value types and
   enums exported from `index.ts`, with the TypeScript compiler API. So the JSDoc rules above are
