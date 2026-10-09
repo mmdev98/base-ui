@@ -1,0 +1,152 @@
+"use client";
+
+import { createContext, use } from "react";
+import {
+  type LightboxDismiss,
+  type LightboxImageLayout,
+  type LightboxImageSize,
+  LightboxPhase,
+  type LightboxItemValue,
+  type LightboxZoom,
+} from "../types";
+
+/**
+ * Slide of the track after the index changed by `step`. `offset` is where a
+ * swipe left it, in px along the reading direction (towards the end is negative).
+ */
+export type LightboxTrackTransition = {
+  step: number;
+  offset: number;
+};
+
+/** An image registered by `Lightbox.Image`, for gestures and flights. */
+export type LightboxImageEntry = {
+  element: HTMLElement;
+  itemElement: HTMLElement;
+  layout: LightboxImageLayout;
+};
+
+export interface LightboxRootContextValue {
+  items: readonly unknown[];
+  /** Value of each item, in the order of `items`. */
+  values: readonly LightboxItemValue[];
+  /** Index of the item shown in the viewer, or last shown. */
+  index: number;
+  activeItem: unknown;
+  /** Value of the item shown in the viewer, or last shown. */
+  activeValue: LightboxItemValue | undefined;
+  open: boolean;
+  phase: LightboxPhase;
+  /** Value of the item whose image loads before the viewer opens. */
+  pendingValue: LightboxItemValue | null;
+  /** Item whose image flies between its trigger and the viewer. */
+  flyingValue: LightboxItemValue | null;
+  /** Whether the active image is zoomed in. */
+  zoomed: boolean;
+  /** Whether a tap hid the controls (caption, buttons). */
+  controlsHidden: boolean;
+  hasPrevious: boolean;
+  hasNext: boolean;
+  minScale: number;
+  maxScale: number;
+  /** Natural sizes of the images loaded so far, by item value. */
+  imageSizes: ReadonlyMap<LightboxItemValue, LightboxImageSize>;
+  /** Loads the item's image, then opens the viewer on it. The image flies from `trigger`, and focus returns to it on close. */
+  openValue: (
+    value: LightboxItemValue,
+    trigger?: HTMLElement | null,
+  ) => Promise<void>;
+  close: () => void;
+  goTo: (index: number) => void;
+  goToPrevious: () => void;
+  goToNext: () => void;
+  zoomIn: () => void;
+  zoomOut: () => void;
+  resetZoom: () => void;
+  panBy: (deltaX: number, deltaY: number) => void;
+  toggleControls: () => void;
+
+  // Wiring between the lightbox parts.
+  /** Element focused when the viewer closes. */
+  getFinalFocus: () => HTMLElement | null;
+  setImageSize: (value: LightboxItemValue, size: LightboxImageSize) => void;
+  /** Registers a trigger to fly to and from. Returns the unregister function. */
+  registerTrigger: (
+    value: LightboxItemValue,
+    element: HTMLElement,
+  ) => () => void;
+  /** Registers an item's image. Returns the unregister function. */
+  registerImage: (
+    value: LightboxItemValue,
+    entry: LightboxImageEntry,
+  ) => () => void;
+  /**
+   * Registers an element of an item that moves with the close drag and fades
+   * out on close when the item has no image to fly back, such as
+   * `Lightbox.Fallback`. Returns the unregister function.
+   */
+  registerDismissFollower: (
+    value: LightboxItemValue,
+    element: HTMLElement,
+  ) => () => void;
+  getActiveImage: () => LightboxImageEntry | undefined;
+  setPopupElement: (element: HTMLElement | null) => void;
+  setBackdropElement: (element: HTMLElement | null) => void;
+  getZoom: () => LightboxZoom;
+  /** Applies a zoom now, stopping any zoom animation. */
+  setZoom: (zoom: LightboxZoom) => void;
+  /** Animates to a zoom; `clamp` first brings it in bounds. */
+  animateZoom: (zoom: LightboxZoom, options?: { clamp?: boolean }) => void;
+  setDismiss: (dismiss: LightboxDismiss, progress: number) => void;
+  /** Animates the close drag to `dismiss`, then calls `onComplete`. */
+  animateDismiss: (dismiss: LightboxDismiss, onComplete?: () => void) => void;
+  /** Sets `data-dragging` on the popup and the backdrop, so the app can turn transitions off. */
+  setDragging: (dragging: boolean) => void;
+  /** Moves the active item by `step` after a swipe left the track `fromOffset` px away. */
+  stepIndex: (step: number, fromOffset: number) => void;
+  /** How the track should slide to the new index, read once by `Lightbox.Viewport`. */
+  takeTrackTransition: () => LightboxTrackTransition | null;
+}
+
+/** Changes on every zoom frame, so it lives apart from `LightboxRootContext`. */
+export interface LightboxRootZoomContextValue {
+  scale: number;
+  canZoomIn: boolean;
+  canZoomOut: boolean;
+}
+
+export const LightboxRootContext =
+  createContext<LightboxRootContextValue | null>(null);
+
+export const LightboxRootZoomContext =
+  createContext<LightboxRootZoomContextValue | null>(null);
+
+export function useLightboxRootContext(): LightboxRootContextValue {
+  const context = use(LightboxRootContext);
+  if (!context) {
+    throw new Error(
+      "Base UI: LightboxRootContext is missing. " +
+        "Lightbox parts must be placed within <Lightbox.Root>.",
+    );
+  }
+  return context;
+}
+
+/**
+ * Reads `LightboxRootContext` when there is one: `Lightbox.Trigger` can be
+ * placed outside `Lightbox.Root` with a `handle`.
+ */
+export function useLightboxRootContextOptional(): LightboxRootContextValue | null {
+  return use(LightboxRootContext);
+}
+
+export function useLightboxRootZoomContext(): LightboxRootZoomContextValue {
+  const context = use(LightboxRootZoomContext);
+  if (!context) {
+    throw new Error(
+      "Base UI: LightboxRootZoomContext is missing. " +
+        "Lightbox parts must be placed within <Lightbox.Root>.",
+    );
+  }
+  return context;
+}

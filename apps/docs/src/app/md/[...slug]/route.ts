@@ -6,7 +6,7 @@ type Params = Promise<{ slug: string[] }>;
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-/** `/md/components/gallery.md`; `/md/index.md` is the introduction. */
+/** `/md/components/lightbox.md`; `/md/index.md` is the introduction. */
 export function generateStaticParams(): { slug: string[] }[] {
   return pages.map((page) => ({
     slug: `${page.slug || "index"}.md`.split("/"),

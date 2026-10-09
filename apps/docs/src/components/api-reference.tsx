@@ -11,7 +11,7 @@ import { InlineMarkdown } from "./inline-markdown";
 
 /**
  * Tables for every part of a library entry point, read from its TypeScript source.
- * In MDX: `<ApiReference component="gallery" />`. `parts` picks and orders them.
+ * In MDX: `<ApiReference component="lightbox" />`. `parts` picks and orders them.
  */
 export function ApiReference(props: {
   component: string;

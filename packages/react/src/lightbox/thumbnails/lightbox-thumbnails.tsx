@@ -1,0 +1,187 @@
+"use client";
+
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { ownerWindow } from "@base-ui/utils/owner";
+import { useMergedRefs } from "@base-ui/utils/useMergedRefs";
+import { useStableCallback } from "@base-ui/utils/useStableCallback";
+import * as React from "react";
+import { useLightboxRootContext } from "../root/lightbox-root-context";
+import {
+  LightboxThumbnailsContext,
+  type LightboxThumbnailsContextValue,
+  LightboxThumbnailsItemContext,
+} from "./lightbox-thumbnails-context";
+import { useLightboxThumbnailsScroll } from "./use-lightbox-thumbnails-scroll";
+
+export type LightboxThumbnailsState = {
+  /** Whether the thumbnails run left to right or top to bottom. */
+  orientation: "horizontal" | "vertical";
+  /** Whether thumbnails are scrolled out of view before the start. */
+  overflowStart: boolean;
+  /** Whether thumbnails are scrolled out of view past the end. */
+  overflowEnd: boolean;
+  /** Whether the mouse drags the strip. */
+  dragging: boolean;
+};
+
+export interface LightboxThumbnailsProps extends Omit<
+  useRender.ComponentProps<"div", LightboxThumbnailsState>,
+  "children"
+> {
+  /**
+   * Renders one thumbnail: a `Lightbox.Thumbnail` with an image inside.
+   * Receives the item as passed to `items`. Called for every item.
+   */
+  // The items can have any shape, like Base UI's `Combobox.List` children.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: (item: any, index: number) => React.ReactNode;
+  /**
+   * Which arrow keys move between thumbnails, ← → or ↑ ↓, and which way the
+   * strip scrolls.
+   * @default "horizontal"
+   */
+  orientation?: "horizontal" | "vertical";
+  /**
+   * Whether the arrow keys also show the item of the thumbnail they move to.
+   * When `false`, they only move focus, and Enter shows the item.
+   * @default true
+   */
+  activateOnFocus?: boolean;
+}
+
+/**
+ * A strip of thumbnails inside the viewer, one per item. It is a single tab
+ * stop: the arrow keys move between thumbnails and show their item, Home and
+ * End go to the first and last. It scrolls itself: the active thumbnail
+ * glides to its centre, the mouse can drag it, and the wheel scrolls a
+ * horizontal strip. Make it scroll with `overflow: auto`, and hide its
+ * scrollbar in CSS if you like. Follows the WAI-ARIA toolbar pattern.
+ * Renders a `<div>` element.
+ */
+export function LightboxThumbnails(
+  props: LightboxThumbnailsProps,
+): React.ReactElement {
+  const {
+    children,
+    orientation = "horizontal",
+    activateOnFocus = true,
+    render,
+    ref,
+    ...elementProps
+  } = props;
+
+  const { items, values, index, goTo } = useLightboxRootContext();
+  const [focusIndex, setFocusIndex] = React.useState(index);
+  const [shownIndex, setShownIndex] = React.useState(index);
+  const thumbnailsRef = React.useRef(new Map<number, HTMLElement>());
+
+  // The tab stop follows the item shown in the viewer.
+  if (index !== shownIndex) {
+    setShownIndex(index);
+    setFocusIndex(index);
+  }
+
+  const getThumbnail = useStableCallback((thumbnailIndex: number) =>
+    thumbnailsRef.current.get(thumbnailIndex),
+  );
+
+  const scroll = useLightboxThumbnailsScroll({
+    orientation,
+    activeIndex: index,
+    getThumbnail,
+  });
+  const mergedRef = useMergedRefs(ref, scroll.ref);
+
+  const registerThumbnail = useStableCallback(
+    (thumbnailIndex: number, element: HTMLElement) => {
+      thumbnailsRef.current.set(thumbnailIndex, element);
+      return () => {
+        if (thumbnailsRef.current.get(thumbnailIndex) === element)
+          thumbnailsRef.current.delete(thumbnailIndex);
+      };
+    },
+  );
+
+  const handleKeyDown = useStableCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      const last = items.length - 1;
+      const isRtl =
+        orientation === "horizontal" &&
+        ownerWindow(event.currentTarget).getComputedStyle(event.currentTarget)
+          .direction === "rtl";
+      let previousKey = isRtl ? "ArrowRight" : "ArrowLeft";
+      let nextKey = isRtl ? "ArrowLeft" : "ArrowRight";
+      if (orientation === "vertical") {
+        previousKey = "ArrowUp";
+        nextKey = "ArrowDown";
+      }
+
+      let target: number | null = null;
+      if (event.key === previousKey) target = Math.max(0, focusIndex - 1);
+      else if (event.key === nextKey) target = Math.min(last, focusIndex + 1);
+      else if (event.key === "Home") target = 0;
+      else if (event.key === "End") target = last;
+      if (target === null) return;
+
+      const element = thumbnailsRef.current.get(target);
+      if (!element) return;
+      // Handled here: the viewer doesn't also change the item.
+      event.preventDefault();
+      setFocusIndex(target);
+      element.focus();
+      if (activateOnFocus) goTo(target);
+    },
+  );
+
+  const contextValue: LightboxThumbnailsContextValue = React.useMemo(
+    () => ({ focusIndex, setFocusIndex, registerThumbnail }),
+    [focusIndex, registerThumbnail],
+  );
+
+  const state: LightboxThumbnailsState = React.useMemo(
+    () => ({
+      orientation,
+      overflowStart: scroll.overflowStart,
+      overflowEnd: scroll.overflowEnd,
+      dragging: scroll.dragging,
+    }),
+    [orientation, scroll.overflowStart, scroll.overflowEnd, scroll.dragging],
+  );
+
+  const element = useRender({
+    defaultTagName: "div",
+    render,
+    ref: mergedRef,
+    state,
+    stateAttributesMapping: {
+      overflowStart: (value) => (value ? { "data-overflow-start": "" } : null),
+      overflowEnd: (value) => (value ? { "data-overflow-end": "" } : null),
+    },
+    props: mergeProps<"div">(
+      scroll.props,
+      {
+        role: "toolbar",
+        "aria-orientation": orientation,
+        "aria-label": "Thumbnails",
+        onKeyDown: handleKeyDown,
+        children: items.map((item, itemIndex) => (
+          <LightboxThumbnailsItemContext
+            key={values[itemIndex]}
+            value={{ index: itemIndex }}
+          >
+            {children(item, itemIndex)}
+          </LightboxThumbnailsItemContext>
+        )),
+      },
+      elementProps,
+    ),
+  });
+
+  return (
+    <LightboxThumbnailsContext value={contextValue}>
+      {element}
+    </LightboxThumbnailsContext>
+  );
+}

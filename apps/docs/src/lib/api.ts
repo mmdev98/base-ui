@@ -25,9 +25,9 @@ export interface ApiAttribute {
 }
 
 export interface ApiPart {
-  /** Short name, as in `Gallery.Root`. */
+  /** Short name, as in `Lightbox.Root`. */
   name: string;
-  /** Full export name, as in `GalleryRoot`. */
+  /** Full export name, as in `LightboxRoot`. */
   fullName: string;
   description: string;
   props: ApiProp[];
@@ -43,7 +43,7 @@ export interface ApiType {
 }
 
 export interface ComponentApi {
-  /** Namespace the parts are exported under (`Gallery`), or `null` for a single part. */
+  /** Namespace the parts are exported under (`Lightbox`), or `null` for a single part. */
   namespace: string | null;
   parts: ApiPart[];
   types: ApiType[];

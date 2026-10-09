@@ -6,7 +6,7 @@ re-exported under the same path, with the same API, and Logic UI adds the compon
 doesn't have, written the same way.
 
 It covers the common building blocks, such as dialogs, menus, popovers, selects and tabs, and
-richer components such as the [Gallery](/docs/components/gallery) and the
+richer components such as the [Lightbox](/docs/components/lightbox) and the
 [Clipboard](/docs/components/clipboard).
 
 ## Built on Base UI
@@ -15,7 +15,7 @@ richer components such as the [Gallery](/docs/components/gallery) and the
   is `@base-ui/react/menu`, and so on for every public entry point. Their pages here link to the
   full docs on [base-ui.com](https://base-ui.com).
 - **More components.** Logic UI adds its own primitives, such as the
-  [Gallery](/docs/components/gallery) and the [Clipboard](/docs/components/clipboard). They follow
+  [Lightbox](/docs/components/lightbox) and the [Clipboard](/docs/components/clipboard). They follow
   Base UI's API, so they compose with its parts.
 - **A drop-in replacement.** An app that already uses Base UI can swap it for Logic UI without
   changing any import. See [Migrate from Base UI](/docs/quick-start#migrate-from-base-ui).
@@ -38,7 +38,7 @@ Every component works the same way:
 - **Parts.** A component is a namespace of parts: `<Clipboard.Root>`, `<Clipboard.Trigger>`. Each
   part renders one element and takes its usual HTML props.
 - **`render` prop.** Swap the element or compose another component:
-  `<Gallery.Next render={<Toolbar.Button />} />`.
+  `<Lightbox.Next render={<Toolbar.Button />} />`.
 - **`data-*` state.** State shows up as attributes (`data-copied`, `data-zoomed`), so you style it
   with CSS or Tailwind variants: `data-copied:text-green-500`.
 - **Controlled or not.** Values come as `value` / `defaultValue` / `onValueChange`, named after
@@ -47,4 +47,4 @@ Every component works the same way:
 ## Server Components
 
 Every part, context and hook file starts with `"use client"`, and the namespaces don't, so you
-can import `Gallery` from a Server Component and render its parts there.
+can import `Lightbox` from a Server Component and render its parts there.

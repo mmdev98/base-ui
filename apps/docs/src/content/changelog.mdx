@@ -1,13 +1,49 @@
 The package follows semver. Until `1.0.0`, a minor version (`0.x.0`) may break the API; each
 breaking change is listed under its release.
 
+## Unreleased
+
+### Breaking changes
+
+- **`Gallery` is now [Lightbox](/docs/components/lightbox)**, at `@logic-ui/react/lightbox`.
+  Every part, type, hook and constant is renamed (`GalleryRoot` → `LightboxRoot`,
+  `GALLERY_ZOOM_SCALE` → `LIGHTBOX_ZOOM_SCALE`), and the CSS variable
+  `--gallery-dismiss-progress` is now `--lightbox-dismiss-progress`. The lightbox is the
+  full-screen viewer only: the page around the triggers is yours.
+- **Items are picked by value, not by index.** `Root` takes `value` / `defaultValue` /
+  `onValueChange` (the open item's value, `null` while closed) instead of `open` /
+  `defaultOpen` / `onOpenChange` and `index` / `defaultIndex` / `onIndexChange`. An item's
+  value is its `id`, or what the new `itemToValue` returns. `Trigger` takes `value` instead of
+  `index`, and `Item` takes no `index`. The open item stays open when items are added,
+  removed or reordered.
+- **Items can have any shape.** `GalleryItemData` is removed. `Image` takes its `src`, `alt`,
+  `width` and `height` as props instead of reading them from the item, and `Description`
+  takes a function child to show the item's caption: `{(photo) => photo.caption}`.
+  `loadImage` receives your item.
+- **Removed `List` and `More`.** Lay out the triggers with your own elements.
+- **Removed `Toolbar` and `Separator`.** Use Base UI's [Toolbar](/docs/components/toolbar)
+  and render each action as a `Toolbar.Button`: `<Lightbox.Next render={<Toolbar.Button />} />`.
+- **Removed `Delete` and `Download`.** Build them as buttons in the popup.
+- **`Image`'s `data-loaded` is replaced** by `data-loading` and `data-error`.
+
+### New features
+
+- `Lightbox.createHandle()` links triggers placed outside `Root` to it, like Base UI's detached
+  triggers, and opens or closes the lightbox from code.
+- `LoadingIndicator` and `Fallback` show while the image loads and when it fails. `Item` has
+  `data-loading` and `data-error`.
+- `Thumbnails` and `Thumbnail`: a strip of thumbnails inside the viewer, a single tab stop with
+  `aria-current` on the item shown.
+- The arrow keys stay with a widget inside the popup that uses them itself, such as a Base UI
+  toolbar or a text field, instead of also changing the image.
+
 ## v0.1.0
 
 October 8, 2026. The first release.
 
 ### New components
 
-- **[Gallery](/docs/components/gallery)**: thumbnails that open a full-screen image viewer.
+- **[Gallery](/docs/components/lightbox)** (now Lightbox): thumbnails that open a full-screen image viewer.
   The image flies out of its thumbnail and back, and the viewer handles swipe, pinch to zoom,
   double tap, pan, drag to close and the keyboard. Comes with toolbar parts for navigation,
   zoom, download and delete.

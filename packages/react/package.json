@@ -104,13 +104,13 @@
       "types": "./build/form/index.d.ts",
       "default": "./build/form/index.js"
     },
-    "./gallery": {
-      "types": "./build/gallery/index.d.ts",
-      "default": "./build/gallery/index.js"
-    },
     "./input": {
       "types": "./build/input/index.d.ts",
       "default": "./build/input/index.js"
+    },
+    "./lightbox": {
+      "types": "./build/lightbox/index.d.ts",
+      "default": "./build/lightbox/index.js"
     },
     "./menu": {
       "types": "./build/menu/index.d.ts",

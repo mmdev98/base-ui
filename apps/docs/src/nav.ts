@@ -198,20 +198,20 @@ export const sections: DocSection[] = [
         file: "components/form/index.mdx",
       },
       {
-        slug: "components/gallery",
-        title: "Gallery",
-        description:
-          "Thumbnails that open a full-screen image viewer with mobile gestures.",
-        file: "components/gallery/index.mdx",
-        api: "gallery",
-        new: true,
-      },
-      {
         slug: "components/input",
         title: "Input",
         description:
           "A native input element that automatically works with Field.",
         file: "components/input/index.mdx",
+      },
+      {
+        slug: "components/lightbox",
+        title: "Lightbox",
+        description:
+          "A full-screen viewer that opens from its triggers, with mobile gestures and zoom.",
+        file: "components/lightbox/index.mdx",
+        api: "lightbox",
+        new: true,
       },
       {
         slug: "components/menu",

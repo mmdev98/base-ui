@@ -10,7 +10,7 @@ export const pageContent: Record<
   "quick-start": () => import("./quick-start.mdx"),
   changelog: () => import("./changelog.mdx"),
   "components/clipboard": () => import("./components/clipboard/index.mdx"),
-  "components/gallery": () => import("./components/gallery/index.mdx"),
+  "components/lightbox": () => import("./components/lightbox/index.mdx"),
   "components/accordion": () => import("./components/accordion/index.mdx"),
   "components/alert-dialog": () =>
     import("./components/alert-dialog/index.mdx"),
