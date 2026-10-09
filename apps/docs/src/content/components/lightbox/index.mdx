@@ -98,7 +98,7 @@ One trigger opens one image, here an avatar with zoom buttons only. The image gr
 
 #### Featured layout
 
-Triggers can be any size: one large tile and smaller ones around it.
+Triggers can be any size: one large tile and smaller ones around it. The image takes each corner's radius from its trigger as it flies, so round the corner tiles themselves (`first:rounded-l-xl`) rather than a container that clips them (`overflow-hidden rounded-xl`): the flight can't see a parent's clip.
 
 <Demo src="./demos/featured.tsx" />
 
