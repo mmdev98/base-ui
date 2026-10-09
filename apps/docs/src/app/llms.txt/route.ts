@@ -1,12 +1,16 @@
 import { withBasePath } from "@/lib/base-path";
+import { getPageMarkdown } from "@/lib/markdown";
 import { getLibraryVersion } from "@/lib/library";
-import { sections, SITE } from "@/nav";
+import { pages, sections, SITE } from "@/nav";
 
 export const dynamic = "force-static";
 
-/** Index of the docs for language models (https://llmstxt.org). */
+/**
+ * The docs for language models (https://llmstxt.org), in one file: the page
+ * index, then every page as Markdown.
+ */
 export function GET(): Response {
-  const body = [
+  const index = [
     `# ${SITE.name}`,
     "",
     `> Unstyled React components for accessible interfaces ` +
@@ -21,11 +25,9 @@ export function GET(): Response {
       ),
       "",
     ]),
-    "## Optional",
-    "",
-    `- [Full docs](${withBasePath("/llms-full.txt")}): every page in one file`,
-    "",
   ].join("\n");
+
+  const body = [index, ...pages.map(getPageMarkdown)].join("\n\n---\n\n");
 
   return new Response(body, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },
