@@ -12,13 +12,9 @@
 Import the component and assemble its parts:
 
 ```jsx title="Anatomy"
-import { Lightbox } from "@logic-ui/react/lightbox";
+<Lightbox.Root>
+  <Lightbox.Trigger />
 
-const lightbox = Lightbox.createHandle();
-
-<Lightbox.Trigger handle={lightbox} value={photo.id} />
-
-<Lightbox.Root handle={lightbox} items={photos}>
   <Lightbox.Portal>
     <Lightbox.Backdrop />
     <Lightbox.Popup>
@@ -37,7 +33,7 @@ const lightbox = Lightbox.createHandle();
       <Lightbox.Viewport>
         {(photo) => (
           <Lightbox.Item>
-            <Lightbox.Image src={photo.src} alt={photo.alt} />
+            <Lightbox.Image />
             <Lightbox.LoadingIndicator />
             <Lightbox.Fallback />
           </Lightbox.Item>
@@ -45,18 +41,11 @@ const lightbox = Lightbox.createHandle();
       </Lightbox.Viewport>
 
       <Lightbox.Thumbnails>
-        {(photo) => (
-          <Lightbox.Thumbnail>
-            <Avatar.Root>
-              <Avatar.Image src={photo.thumb} alt="" />
-              <Avatar.Fallback />
-            </Avatar.Root>
-          </Lightbox.Thumbnail>
-        )}
+        {(photo) => <Lightbox.Thumbnail />}
       </Lightbox.Thumbnails>
     </Lightbox.Popup>
   </Lightbox.Portal>
-</Lightbox.Root>;
+</Lightbox.Root>
 ```
 
 ## Examples
