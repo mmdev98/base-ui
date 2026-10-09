@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { NumberField } from "@mmdev98/base-ui/number-field";
+import { NumberField } from "@logic-ui/react/number-field";
 
 export function Root({ className, ...props }: NumberField.Root.Props) {
   return (

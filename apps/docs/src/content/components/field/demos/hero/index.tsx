@@ -1,4 +1,4 @@
-import { Field } from "@mmdev98/base-ui/field";
+import { Field } from "@logic-ui/react/field";
 
 export default function ExampleField() {
   return (

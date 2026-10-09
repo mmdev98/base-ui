@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 
 export default function ExampleMenu() {
   return (

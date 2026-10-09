@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Fieldset } from "@mmdev98/base-ui/fieldset";
+import { Fieldset } from "@logic-ui/react/fieldset";
 
 export function Root(props: Fieldset.Root.Props) {
   return <Fieldset.Root {...props} />;

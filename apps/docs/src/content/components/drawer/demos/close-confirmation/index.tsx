@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { AlertDialog } from "@mmdev98/base-ui/alert-dialog";
-import { Drawer } from "@mmdev98/base-ui/drawer";
+import { AlertDialog } from "@logic-ui/react/alert-dialog";
+import { Drawer } from "@logic-ui/react/drawer";
 
 export default function ExampleDrawer() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);

@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { useRender } from "@mmdev98/base-ui/use-render";
-import { mergeProps } from "@mmdev98/base-ui/merge-props";
+import { useRender } from "@logic-ui/react/use-render";
+import { mergeProps } from "@logic-ui/react/merge-props";
 
 interface CounterState {
   odd: boolean;

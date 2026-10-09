@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Toggle } from "@mmdev98/base-ui/toggle";
+import { Toggle } from "@logic-ui/react/toggle";
 
 export default function ExampleToggle() {
   return (

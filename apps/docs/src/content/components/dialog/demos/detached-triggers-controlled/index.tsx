@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Dialog } from "@mmdev98/base-ui/dialog";
+import { Dialog } from "@logic-ui/react/dialog";
 
 const demoDialog = Dialog.createHandle<number>();
 

@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import { Toast } from "@mmdev98/base-ui/toast";
-import { Button } from "@mmdev98/base-ui/button";
-import { Tooltip } from "@mmdev98/base-ui/tooltip";
+import { Toast } from "@logic-ui/react/toast";
+import { Button } from "@logic-ui/react/button";
+import { Tooltip } from "@logic-ui/react/tooltip";
 
 const stackedToastManager = Toast.createToastManager();
 const anchoredToastManager = Toast.createToastManager();

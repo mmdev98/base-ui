@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { AlertDialog } from "@mmdev98/base-ui/alert-dialog";
+import { AlertDialog } from "@logic-ui/react/alert-dialog";
 
 type AlertPayload = { message: string };
 

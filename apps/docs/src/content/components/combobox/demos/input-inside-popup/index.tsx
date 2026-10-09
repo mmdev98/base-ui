@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Combobox } from "@mmdev98/base-ui/combobox";
+import { Combobox } from "@logic-ui/react/combobox";
 
 export default function ExamplePopoverCombobox() {
   return (

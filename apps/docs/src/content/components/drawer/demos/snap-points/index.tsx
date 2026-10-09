@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Drawer } from "@mmdev98/base-ui/drawer";
+import { Drawer } from "@logic-ui/react/drawer";
 
 const TOP_MARGIN_REM = 1;
 const VISIBLE_SNAP_POINTS_REM = [30];

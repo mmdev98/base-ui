@@ -1,5 +1,5 @@
 import * as React from "react";
-import { OTPField } from "@mmdev98/base-ui/otp-field";
+import { OTPField } from "@logic-ui/react/otp-field";
 
 const OTP_LENGTH = 6;
 

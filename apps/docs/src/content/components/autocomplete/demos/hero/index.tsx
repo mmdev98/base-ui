@@ -1,5 +1,5 @@
 "use client";
-import { Autocomplete } from "@mmdev98/base-ui/autocomplete";
+import { Autocomplete } from "@logic-ui/react/autocomplete";
 
 export default function ExampleAutocomplete() {
   return (

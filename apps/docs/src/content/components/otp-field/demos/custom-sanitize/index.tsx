@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "cn";
-import { OTPField } from "@mmdev98/base-ui/otp-field";
+import { OTPField } from "@logic-ui/react/otp-field";
 import { useInvalidFeedback } from "./useInvalidFeedback";
 
 const CODE_LENGTH = 6;

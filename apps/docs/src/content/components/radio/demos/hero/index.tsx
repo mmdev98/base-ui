@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { Radio } from "@mmdev98/base-ui/radio";
-import { RadioGroup } from "@mmdev98/base-ui/radio-group";
+import { Radio } from "@logic-ui/react/radio";
+import { RadioGroup } from "@logic-ui/react/radio-group";
 
 export default function ExampleRadioGroup() {
   const id = React.useId();

@@ -196,15 +196,15 @@ importers:
 
   apps/docs:
     dependencies:
+      '@logic-ui/react':
+        specifier: workspace:*
+        version: link:../../packages/react
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1(supports-color@7.2.0)
       '@mdx-js/react':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@19.3.0)(react@19.3.0)
-      '@mmdev98/base-ui':
-        specifier: workspace:*
-        version: link:../../packages/base-ui
       '@next/mdx':
         specifier: ^16.4.0
         version: 16.4.0(@mdx-js/loader@3.1.1(supports-color@7.2.0))(@mdx-js/react@3.1.1(@types/react@19.3.0)(react@19.3.0))
@@ -285,7 +285,7 @@ importers:
         specifier: ^4.2.4
         version: 4.2.4
 
-  packages/base-ui:
+  packages/react:
     dependencies:
       '@base-ui/react':
         specifier: 1.8.0

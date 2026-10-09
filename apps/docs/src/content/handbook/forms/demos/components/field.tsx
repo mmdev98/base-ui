@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Field } from "@mmdev98/base-ui/field";
+import { Field } from "@logic-ui/react/field";
 
 export function Root({ className, ...props }: Field.Root.Props) {
   return (

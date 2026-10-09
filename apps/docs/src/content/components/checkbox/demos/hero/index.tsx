@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Checkbox } from "@mmdev98/base-ui/checkbox";
+import { Checkbox } from "@logic-ui/react/checkbox";
 
 export default function ExampleCheckbox() {
   return (

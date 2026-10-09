@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { PreviewCard } from "@mmdev98/base-ui/preview-card";
+import { PreviewCard } from "@logic-ui/react/preview-card";
 
 const demoPreviewCard = PreviewCard.createHandle<React.ReactElement>();
 

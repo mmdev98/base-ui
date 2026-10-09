@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { Checkbox } from "@mmdev98/base-ui/checkbox";
-import { CheckboxGroup } from "@mmdev98/base-ui/checkbox-group";
+import { Checkbox } from "@logic-ui/react/checkbox";
+import { CheckboxGroup } from "@logic-ui/react/checkbox-group";
 
 export default function ExampleCheckboxGroup() {
   const id = React.useId();

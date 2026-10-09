@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Tooltip } from "@mmdev98/base-ui/tooltip";
+import { Tooltip } from "@logic-ui/react/tooltip";
 import { HeadphonesIcon, StopwatchIcon, TrashIcon } from "../icons-tw";
 
 const demoTooltip = Tooltip.createHandle<React.ReactNode>();

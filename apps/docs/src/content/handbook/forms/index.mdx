@@ -22,8 +22,8 @@ Use `<Field.Label>` or a native `<label>` to label the following controls:
 You can implicitly label `<Checkbox>`, `<Radio>` and `<Switch>` components by enclosing them with `<Field.Label>`:
 
 ```tsx title="Implicitly labeling a switch"
-import { Field } from "@mmdev98/base-ui/field";
-import { Switch } from "@mmdev98/base-ui/switch";
+import { Field } from "@logic-ui/react/field";
+import { Switch } from "@logic-ui/react/switch";
 
 <Field.Root>
   <Field.Label>
@@ -50,10 +50,10 @@ If no visible label is rendered, provide `aria-label` on the actual form control
 `<Field.Description>` automatically assigns an accessible description:
 
 ```tsx title="Labeling select and slider"
-import { Form } from "@mmdev98/base-ui/form";
-import { Field } from "@mmdev98/base-ui/field";
-import { Select } from "@mmdev98/base-ui/select";
-import { Slider } from "@mmdev98/base-ui/slider";
+import { Form } from "@logic-ui/react/form";
+import { Field } from "@logic-ui/react/field";
+import { Select } from "@logic-ui/react/select";
+import { Slider } from "@logic-ui/react/slider";
 
 <Form>
   <Field.Root>
@@ -85,12 +85,12 @@ import { Slider } from "@mmdev98/base-ui/slider";
 Compose `<Fieldset>` when a single label applies to multiple controls, such as a range slider with multiple thumbs or a section that combines several inputs. For checkbox and radio groups, keep the group label in `<Fieldset.Legend>` and wrap each option with `<Field.Item>`:
 
 ```tsx title="Composing range slider and radio group with fieldset"
-import { Form } from "@mmdev98/base-ui/form";
-import { Field } from "@mmdev98/base-ui/field";
-import { Fieldset } from "@mmdev98/base-ui/fieldset";
-import { Radio } from "@mmdev98/base-ui/radio";
-import { RadioGroup } from "@mmdev98/base-ui/radio-group";
-import { Slider } from "@mmdev98/base-ui/slider";
+import { Form } from "@logic-ui/react/form";
+import { Field } from "@logic-ui/react/field";
+import { Fieldset } from "@logic-ui/react/fieldset";
+import { Radio } from "@logic-ui/react/radio";
+import { RadioGroup } from "@logic-ui/react/radio-group";
+import { Slider } from "@logic-ui/react/slider";
 
 <Form>
   <Field.Root>
@@ -124,11 +124,11 @@ import { Slider } from "@mmdev98/base-ui/slider";
 `<Field.Item>` should enclose each checkbox or radio option so every control has its own label and description:
 
 ```tsx title="Explicitly labeling checkboxes in a checkbox group"
-import { Form } from "@mmdev98/base-ui/form";
-import { Field } from "@mmdev98/base-ui/field";
-import { Fieldset } from "@mmdev98/base-ui/fieldset";
-import { Checkbox } from "@mmdev98/base-ui/checkbox";
-import { CheckboxGroup } from "@mmdev98/base-ui/checkbox-group";
+import { Form } from "@logic-ui/react/form";
+import { Field } from "@logic-ui/react/field";
+import { Fieldset } from "@logic-ui/react/fieldset";
+import { Checkbox } from "@logic-ui/react/checkbox";
+import { CheckboxGroup } from "@logic-ui/react/checkbox-group";
 
 <Field.Root>
   <Fieldset.Root render={<CheckboxGroup />}>
@@ -156,9 +156,9 @@ import { CheckboxGroup } from "@mmdev98/base-ui/checkbox-group";
 Pass the `name` prop to `<Field.Root>` to include the wrapped control's value when a parent form is submitted:
 
 ```tsx title="Assigning field name to combobox"
-import { Form } from "@mmdev98/base-ui/form";
-import { Field } from "@mmdev98/base-ui/field";
-import { Combobox } from "@mmdev98/base-ui/combobox";
+import { Form } from "@logic-ui/react/form";
+import { Field } from "@logic-ui/react/field";
+import { Combobox } from "@logic-ui/react/combobox";
 
 <Form>
   {/* @highlight-start */}
@@ -176,7 +176,7 @@ import { Combobox } from "@mmdev98/base-ui/combobox";
 You can take over form submission using the native `onSubmit`, or custom `onFormSubmit` props:
 
 ```tsx title="Native submission using onSubmit"
-import { Form } from "@mmdev98/base-ui/form";
+import { Form } from "@logic-ui/react/form";
 
 <Form
   // @highlight-start
@@ -198,7 +198,7 @@ import { Form } from "@mmdev98/base-ui/form";
 When using `onFormSubmit`, you receive form values as a JavaScript object, with `eventDetails` provided as a second argument. Additionally, `preventDefault()` is automatically called on the native submit event:
 
 ```tsx title="Submission using onFormSubmit"
-import { Form } from "@mmdev98/base-ui/form";
+import { Form } from "@logic-ui/react/form";
 
 <Form
   // @highlight-start
@@ -226,7 +226,7 @@ Base UI form components support native HTML validation attributes for many vali
 - `step` specifies an increment that numeric field values must be an integral multiple of.
 
 ```tsx title="Defining constraint validation on a text field"
-import { Field } from "@mmdev98/base-ui/field";
+import { Field } from "@logic-ui/react/field";
 
 <Field.Root name="website">
   <Field.Control type="url" required pattern="https?://.*" />
@@ -238,8 +238,8 @@ Base UI form components use a hidden input to participate in native form submis
 To anchor the hidden input near a control so the native validation bubble points to the correct area, ensure the component has been given a `name`, and wrap controls in a relatively positioned container for best results.
 
 ```tsx title="Positioning hidden inputs"
-import { Field } from "@mmdev98/base-ui/field";
-import { Select } from "@mmdev98/base-ui/select";
+import { Field } from "@logic-ui/react/field";
+import { Select } from "@logic-ui/react/select";
 
 <Field.Root name="apple">
   <Select.Root>
@@ -264,7 +264,7 @@ Use the `validationMode` prop to configure when validation is performed:
 `validationDebounceTime` can be used to debounce the function in use cases such as asynchronous requests or text fields that validate `onChange`.
 
 ```tsx title="Text input using custom asynchronous validation"
-import { Field } from '@mmdev98/base-ui/field';
+import { Field } from '@logic-ui/react/field';
 
 <Field.Root
   name="username"
@@ -303,8 +303,8 @@ You can pass errors returned by (post-submission) server-side validation to the 
 This should be an object with field names as keys, and an error string or array of strings as the value. Once a field's value changes, any corresponding error in `errors` will be cleared from the field state.
 
 ```tsx title="Displaying errors returned by server-side validation"
-import { Form } from '@mmdev98/base-ui/form';
-import { Field } from '@mmdev98/base-ui/field';
+import { Form } from '@logic-ui/react/form';
+import { Field } from '@logic-ui/react/field';
 
 async function submitToServer(/* payload */) {
   return {
@@ -334,8 +334,8 @@ When using [Server Functions with Form Actions](https://react.dev/reference/rsc/
 // app/form.tsx
 /* prettier-ignore */
 'use client';
-import { Form } from "@mmdev98/base-ui/form";
-import { Field } from "@mmdev98/base-ui/field";
+import { Form } from "@logic-ui/react/form";
+import { Field } from "@logic-ui/react/field";
 import { login } from "./actions";
 
 // @highlight-text "state" "formAction"
@@ -402,7 +402,7 @@ Use the `<Controller>` component to integrate with any `<Field>` component, forw
 
 ```tsx title="Integrating the controller component with Base UI field"
 import { useForm, Controller } from "react-hook-form";
-import { Field } from '@mmdev98/base-ui/field';
+import { Field } from '@logic-ui/react/field';
 
 const { control, handleSubmit} = useForm({
   defaultValues: {
@@ -452,7 +452,7 @@ Specify `rules` on the `<Controller>` in the same format as [`register`](https:/
 
 ```tsx title="Defining validation rules and displaying errors"
 import { Controller } from "react-hook-form";
-import { Field } from '@mmdev98/base-ui/field';
+import { Field } from '@logic-ui/react/field';
 
 <Controller
   {/* @highlight-start */}
@@ -501,7 +501,7 @@ Wrap your submit handler function with `handleSubmit` to receive the form values
 
 ```tsx title="Form submission handler"
 import { useForm } from "react-hook-form";
-import { Form } from "@mmdev98/base-ui/form";
+import { Form } from "@logic-ui/react/form";
 
 interface FormValues {
   username: string;
@@ -555,7 +555,7 @@ Use the `<form.Field>` component from the form instance to integrate with Base 
 
 ```tsx title="Integrating TanStack Form with Base UI components"
 import { useForm } from '@tanstack/react-form';
-import { Field } from '@mmdev98/base-ui/field';
+import { Field } from '@logic-ui/react/field';
 
 const form = useForm(/* defaultValues, other parameters */)
 
@@ -648,7 +648,7 @@ const form = useForm({
 You can pass additional validator functions to individual `<form.Field>` components to add validations on top of the form-level validators:
 
 ```tsx title="Field-level validators"
-import { Field } from '@mmdev98/base-ui/field';
+import { Field } from '@logic-ui/react/field';
 import { useForm } from '@tanstack/react-form';
 
 const form = useForm();

@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { AlertDialog } from "@mmdev98/base-ui/alert-dialog";
-import { Dialog } from "@mmdev98/base-ui/dialog";
+import { AlertDialog } from "@logic-ui/react/alert-dialog";
+import { Dialog } from "@logic-ui/react/dialog";
 
 export default function ExampleDialog() {
   const [dialogOpen, setDialogOpen] = React.useState(false);

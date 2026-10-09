@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Form as BaseForm } from "@mmdev98/base-ui/form";
+import { Form as BaseForm } from "@logic-ui/react/form";
 
 export function Form({ className, ...props }: BaseForm.Props) {
   return (

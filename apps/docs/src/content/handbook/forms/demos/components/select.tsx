@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Select } from "@mmdev98/base-ui/select";
+import { Select } from "@logic-ui/react/select";
 
 export function Root<Value>(props: Select.Root.Props<Value>) {
   return <Select.Root {...props} />;

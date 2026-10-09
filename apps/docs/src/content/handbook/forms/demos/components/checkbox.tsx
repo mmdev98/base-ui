@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Checkbox } from "@mmdev98/base-ui/checkbox";
+import { Checkbox } from "@logic-ui/react/checkbox";
 
 export function Root({ className, ...props }: Checkbox.Root.Props) {
   return (

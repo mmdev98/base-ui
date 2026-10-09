@@ -1,5 +1,5 @@
 import * as React from "react";
-import { NavigationMenu } from "@mmdev98/base-ui/navigation-menu";
+import { NavigationMenu } from "@logic-ui/react/navigation-menu";
 
 export default function ExampleNavigationMenu() {
   return (

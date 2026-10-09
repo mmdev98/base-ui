@@ -1,4 +1,4 @@
-import { Slider } from "@mmdev98/base-ui/slider";
+import { Slider } from "@logic-ui/react/slider";
 
 export default function VerticalSlider() {
   return (

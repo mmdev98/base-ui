@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { CheckboxGroup as BaseCheckboxGroup } from "@mmdev98/base-ui/checkbox-group";
+import { CheckboxGroup as BaseCheckboxGroup } from "@logic-ui/react/checkbox-group";
 
 export function CheckboxGroup({
   className,

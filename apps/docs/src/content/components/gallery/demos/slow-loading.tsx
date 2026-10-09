@@ -4,7 +4,7 @@ import {
   Gallery,
   loadGalleryImage,
   type GalleryItemData,
-} from "@mmdev98/base-ui/gallery";
+} from "@logic-ui/react/gallery";
 import { getThumbnailSrc, photos } from "./_photos";
 import { DemoViewer } from "./_viewer";
 import { classes } from "./_classes";

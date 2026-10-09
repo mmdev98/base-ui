@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { RadioGroup as BaseRadioGroup } from "@mmdev98/base-ui/radio-group";
+import { RadioGroup as BaseRadioGroup } from "@logic-ui/react/radio-group";
 
 export function RadioGroup<Value>({
   className,

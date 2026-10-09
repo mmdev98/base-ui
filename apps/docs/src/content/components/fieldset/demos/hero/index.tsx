@@ -1,5 +1,5 @@
-import { Field } from "@mmdev98/base-ui/field";
-import { Fieldset } from "@mmdev98/base-ui/fieldset";
+import { Field } from "@logic-ui/react/field";
+import { Fieldset } from "@logic-ui/react/fieldset";
 
 export default function ExampleField() {
   return (

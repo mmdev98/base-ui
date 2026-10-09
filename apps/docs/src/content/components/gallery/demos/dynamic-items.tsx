@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Gallery } from "@mmdev98/base-ui/gallery";
+import { Gallery } from "@logic-ui/react/gallery";
 import { getThumbnailSrc, photos } from "./_photos";
 import { DemoViewer } from "./_viewer";
 import { classes } from "./_classes";

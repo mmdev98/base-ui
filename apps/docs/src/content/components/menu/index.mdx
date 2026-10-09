@@ -5,7 +5,7 @@
 Import the component and assemble its parts:
 
 ```jsx title="Anatomy"
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 
 <Menu.Root>
   <Menu.Trigger />
@@ -131,8 +131,8 @@ In order to open a dialog using a menu, control the dialog state and open it imp
 
 ```tsx title="Connecting a dialog to a menu"
 import * as React from "react";
-import { Dialog } from "@mmdev98/base-ui/dialog";
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Dialog } from "@logic-ui/react/dialog";
+import { Menu } from "@logic-ui/react/menu";
 
 function ExampleMenu() {
   const [dialogOpen, setDialogOpen] = React.useState(false);

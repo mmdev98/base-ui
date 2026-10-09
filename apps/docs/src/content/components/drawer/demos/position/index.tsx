@@ -1,4 +1,4 @@
-import { Drawer } from "@mmdev98/base-ui/drawer";
+import { Drawer } from "@logic-ui/react/drawer";
 
 export default function ExampleDrawer() {
   return (

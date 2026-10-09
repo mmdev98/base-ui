@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Select } from "@mmdev98/base-ui/select";
+import { Select } from "@logic-ui/react/select";
 
 const apples = [
   { label: "Gala", value: "gala" },

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Gallery, useGalleryRootContext } from "@mmdev98/base-ui/gallery";
+import { Gallery, useGalleryRootContext } from "@logic-ui/react/gallery";
 import { getThumbnailSrc, photos } from "./_photos";
 import { CloseIcon } from "./_viewer";
 import { classes } from "./_classes";

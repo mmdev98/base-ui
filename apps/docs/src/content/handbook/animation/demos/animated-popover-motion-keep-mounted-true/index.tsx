@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Popover } from "@mmdev98/base-ui/popover";
+import { Popover } from "@logic-ui/react/popover";
 import { motion, type HTMLMotionProps } from "motion/react";
 
 export default function AnimatedPopoverMotionKeepMountedTrueDemo() {

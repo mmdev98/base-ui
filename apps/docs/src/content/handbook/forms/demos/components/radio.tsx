@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Radio } from "@mmdev98/base-ui/radio";
+import { Radio } from "@logic-ui/react/radio";
 
 export function Root({ className, ...props }: Radio.Root.Props) {
   return (

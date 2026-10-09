@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Toast } from "@mmdev98/base-ui/toast";
+import { Toast } from "@logic-ui/react/toast";
 
 export default function PulseToast() {
   return (

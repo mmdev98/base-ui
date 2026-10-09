@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Select } from "@mmdev98/base-ui/select";
-import { Field } from "@mmdev98/base-ui/field";
+import { Select } from "@logic-ui/react/select";
+import { Field } from "@logic-ui/react/field";
 
 export default function ExampleSelectGrouped() {
   return (

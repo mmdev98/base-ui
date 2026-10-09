@@ -1,4 +1,4 @@
-import { ContextMenu } from "@mmdev98/base-ui/context-menu";
+import { ContextMenu } from "@logic-ui/react/context-menu";
 
 export default function ExampleMenu() {
   return (

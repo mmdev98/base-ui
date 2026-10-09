@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Switch } from "@mmdev98/base-ui/switch";
+import { Switch } from "@logic-ui/react/switch";
 
 export function Root({ className, ...props }: Switch.Root.Props) {
   return (

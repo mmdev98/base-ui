@@ -1,4 +1,4 @@
-import { ScrollArea } from "@mmdev98/base-ui/scroll-area";
+import { ScrollArea } from "@logic-ui/react/scroll-area";
 
 export default function ExampleScrollAreaBoth() {
   return (

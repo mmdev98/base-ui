@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 
 const demoMenu = Menu.createHandle();
 

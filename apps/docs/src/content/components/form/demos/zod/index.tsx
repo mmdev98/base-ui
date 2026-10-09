@@ -1,9 +1,9 @@
 "use client";
 import * as React from "react";
 import { z } from "zod";
-import { Field } from "@mmdev98/base-ui/field";
-import { Form } from "@mmdev98/base-ui/form";
-import { Button } from "@mmdev98/base-ui/button";
+import { Field } from "@logic-ui/react/field";
+import { Form } from "@logic-ui/react/form";
+import { Button } from "@logic-ui/react/button";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),

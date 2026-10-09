@@ -1,4 +1,4 @@
-import { Switch } from "@mmdev98/base-ui/switch";
+import { Switch } from "@logic-ui/react/switch";
 
 export default function ExampleSwitch() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import { Autocomplete } from "@mmdev98/base-ui/autocomplete";
-import { Dialog } from "@mmdev98/base-ui/dialog";
-import { ScrollArea } from "@mmdev98/base-ui/scroll-area";
+import { Autocomplete } from "@logic-ui/react/autocomplete";
+import { Dialog } from "@logic-ui/react/dialog";
+import { ScrollArea } from "@logic-ui/react/scroll-area";
 
 export default function ExampleAutocompleteCommandPalette() {
   const [open, setOpen] = React.useState(false);

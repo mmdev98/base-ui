@@ -1,4 +1,4 @@
-import { Meter } from "@mmdev98/base-ui/meter";
+import { Meter } from "@logic-ui/react/meter";
 
 export default function ExampleMeter() {
   return (

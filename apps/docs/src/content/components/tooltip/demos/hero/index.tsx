@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tooltip } from "@mmdev98/base-ui/tooltip";
+import { Tooltip } from "@logic-ui/react/tooltip";
 
 export default function ExampleTooltip() {
   return (

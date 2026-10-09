@@ -1,4 +1,4 @@
-import { Input } from "@mmdev98/base-ui/input";
+import { Input } from "@logic-ui/react/input";
 
 export default function ExampleInput() {
   return (

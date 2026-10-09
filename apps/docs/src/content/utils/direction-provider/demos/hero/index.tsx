@@ -1,5 +1,5 @@
-import { Slider } from "@mmdev98/base-ui/slider";
-import { DirectionProvider } from "@mmdev98/base-ui/direction-provider";
+import { Slider } from "@logic-ui/react/slider";
+import { DirectionProvider } from "@logic-ui/react/direction-provider";
 
 export default function ExampleDirectionProvider() {
   return (

@@ -11,7 +11,7 @@
 Import the component and assemble its parts:
 
 ```jsx title="Anatomy"
-import { Select } from "@mmdev98/base-ui/select";
+import { Select } from "@logic-ui/react/select";
 
 <Select.Root>
   <Select.Label />
@@ -67,7 +67,7 @@ The following example shows a typed wrapper around the Select component with cor
 
 ```tsx title="Specifying generic type parameters"
 import * as React from "react";
-import { Select } from "@mmdev98/base-ui/select";
+import { Select } from "@logic-ui/react/select";
 
 export function MySelect<Value, Multiple extends boolean | undefined = false>(
   props: Select.Root.Props<Value, Multiple>,

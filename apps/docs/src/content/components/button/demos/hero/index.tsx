@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "@mmdev98/base-ui/button";
+import { Button } from "@logic-ui/react/button";
 
 export default function ExampleButton() {
   return (

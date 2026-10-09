@@ -1,8 +1,8 @@
 "use client";
 import * as React from "react";
-import { Dialog } from "@mmdev98/base-ui/dialog";
-import { Field } from "@mmdev98/base-ui/field";
-import { Fieldset } from "@mmdev98/base-ui/fieldset";
+import { Dialog } from "@logic-ui/react/dialog";
+import { Field } from "@logic-ui/react/field";
+import { Fieldset } from "@logic-ui/react/fieldset";
 
 export default function ExampleDialog() {
   const initialFocusRef = React.useRef<HTMLInputElement | null>(null);

@@ -7,8 +7,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./src/*"],
-      "@mmdev98/base-ui": ["../../packages/base-ui/src"],
-      "@mmdev98/base-ui/*": ["../../packages/base-ui/src/*"]
+      "@logic-ui/react": ["../../packages/react/src"],
+      "@logic-ui/react/*": ["../../packages/react/src/*"]
     }
   },
   "include": [

@@ -1,4 +1,4 @@
-import type { GalleryItemData } from "@mmdev98/base-ui/gallery";
+import type { GalleryItemData } from "@logic-ui/react/gallery";
 
 /** Photos of different shapes, shared by the gallery demos. */
 export const photos: GalleryItemData[] = [

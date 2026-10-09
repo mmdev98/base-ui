@@ -3,7 +3,7 @@
 Import the component and wrap it around your app:
 
 ```jsx title="Anatomy"
-import { CSPProvider } from "@mmdev98/base-ui/csp-provider";
+import { CSPProvider } from "@logic-ui/react/csp-provider";
 
 // prettier-ignore
 <CSPProvider nonce="...">
@@ -37,7 +37,7 @@ const csp = [
 Then:
 
 ```jsx title="Providing the nonce"
-import { CSPProvider } from "@mmdev98/base-ui/csp-provider";
+import { CSPProvider } from "@logic-ui/react/csp-provider";
 
 function App({ nonce }) {
   return <CSPProvider nonce={nonce}>{/* ... */}</CSPProvider>;

@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { mergeProps } from "@mmdev98/base-ui/merge-props";
-import { Toggle } from "@mmdev98/base-ui/toggle";
+import { mergeProps } from "@logic-ui/react/merge-props";
+import { Toggle } from "@logic-ui/react/toggle";
 
 export default function ExamplePreventBaseUIHandler() {
   const [locked, setLocked] = React.useState(true);

@@ -1,4 +1,4 @@
-import { Separator } from "@mmdev98/base-ui/separator";
+import { Separator } from "@logic-ui/react/separator";
 
 export default function ExampleSeparator() {
   return (

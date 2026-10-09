@@ -117,7 +117,7 @@ function demoToMarkdown(
 const API_REFERENCE =
   /<ApiReference\s+component="([^"]+)"(?:\s+parts=\{\[([^\]]*)\]\})?\s*\/>/g;
 
-/** `<InstallCommand package="@mmdev98/base-ui" />`. */
+/** `<InstallCommand package="@logic-ui/react" />`. */
 const INSTALL_COMMAND = /<InstallCommand\s+package="([^"]+)"\s*\/>/g;
 
 function installToMarkdown(packageName: string): string {

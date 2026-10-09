@@ -16,7 +16,7 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@mmdev98/base-ui": "workspace:*",
+    "@logic-ui/react": "workspace:*",
     "@next/mdx": "^16.4.0",
     "@tanstack/react-form": "^1.33.5",
     "@tanstack/react-virtual": "^3.14.13",

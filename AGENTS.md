@@ -6,12 +6,12 @@ Put rules for a single folder in an `AGENTS.md` inside that folder.
 
 ## What this repo is
 
-`@mmdev98/base-ui` is a library of **headless React primitives**: components and hooks that handle
+`@logic-ui/react` is a library of **headless React primitives**: components and hooks that handle
 behaviour and accessibility (state, keyboard, focus, ARIA) and render **no styles**. It has two layers:
 
 1. **Base UI re-exports.** Every public `@base-ui/react` entry point is re-exported under the same
-   path (`@mmdev98/base-ui/dialog`), plus a curated set of hooks from `@base-ui/utils`
-   (`@mmdev98/base-ui/utils`). Apps import from this package only, never from `@base-ui/*` directly.
+   path (`@logic-ui/react/dialog`), plus a curated set of hooks from `@base-ui/utils`
+   (`@logic-ui/react/utils`). Apps import from this package only, never from `@base-ui/*` directly.
 2. **Our own primitives** for what Base UI doesn't have (`Clipboard`, …). They follow Base UI's API
    so they feel the same: a `render` prop, `data-*` state attributes, `value` / `defaultValue` /
    `onValueChange`.
@@ -19,7 +19,7 @@ behaviour and accessibility (state, keyboard, focus, ARIA) and render **no style
 ```text
 .
 ├── packages/
-│   └── base-ui/             @mmdev98/base-ui, the published package
+│   └── base-ui/             @logic-ui/react, the published package
 │       ├── src/<component>/ one folder per entry point
 │       ├── scripts/         generate-exports.mjs
 │       └── test/            Vitest setup and shared helpers
@@ -34,7 +34,7 @@ behaviour and accessibility (state, keyboard, focus, ARIA) and render **no style
 - From the root: `pnpm dev` (docs at http://localhost:3005), `pnpm build` (the library),
   `pnpm docs:build` (static docs export), `pnpm typecheck` (library and docs), `pnpm lint`, `pnpm test`,
   `pnpm format`. Root scripts run through turbo.
-- In `packages/base-ui`: `pnpm generate:exports`, `pnpm vitest run <path>`.
+- In `packages/react`: `pnpm generate:exports`, `pnpm vitest run <path>`.
 - Don't run `pnpm test:watch` or plain `vitest` from an agent: watch mode never exits.
 
 ## Verifying changes
@@ -58,7 +58,7 @@ Before you say a change is done, or before a commit:
   folder and write the component there. The script skips folders without the marker, so ours wins.
   Keep Base UI's part names and props so the swap is not a breaking change.
 - `@base-ui/react` is a **dependency**, pinned to an exact version. This package replaces Base UI in
-  apps: they install only `@mmdev98/base-ui` and never add `@base-ui/react` themselves, so there
+  apps: they install only `@logic-ui/react` and never add `@base-ui/react` themselves, so there
   is one copy and contexts work. `tsdown` keeps dependencies external, so `build` imports it instead
   of bundling it. Upgrading Base UI means bumping this pin, and `@base-ui/utils` with it.
 - `@base-ui/utils` is a **dependency** too, pinned to the exact version `@base-ui/react` uses, so pnpm
@@ -318,8 +318,8 @@ Vitest, Testing Library and jsdom. The rules follow Base UI's (`AGENTS.md` in th
 primitives in full and lists the Base UI re-exports with links to base-ui.com. It is also where demos
 are tried by hand: there is no separate playground.
 
-- It reads the library from `packages/base-ui/src` through tsconfig `paths`
-  (`"@mmdev98/base-ui/*": ["../../packages/base-ui/src/*"]`), so it needs no build. Don't
+- It reads the library from `packages/react/src` through tsconfig `paths`
+  (`"@logic-ui/react/*": ["../../packages/react/src/*"]`), so it needs no build. Don't
   change it to read `build`.
 - It follows the repo's ESLint, Prettier and code style, like the package. Class names are merged
   with `cn` (from the `cn` package), not `clsx`.
@@ -369,11 +369,11 @@ are tried by hand: there is no separate playground.
   the README and LICENSE. `publishConfig.directory` makes `pnpm pack` and `pnpm publish` pack
   `build/`. Edit the root `package.json` only; `build/package.json` is generated.
 - To try the package in an app before publishing: `pnpm build`, then
-  `pnpm pack --pack-destination <absolute path>` from `packages/base-ui` (pnpm resolves a
+  `pnpm pack --pack-destination <absolute path>` from `packages/react` (pnpm resolves a
   relative path from `build/`), and install the `.tgz` in the app with `pnpm add <path to .tgz>`.
 - The changelog is the docs page `apps/docs/src/content/changelog.mdx`, newest release first.
-- Release steps: `pnpm build && pnpm test`, bump the version in `packages/base-ui/package.json`,
-  add its entry to the changelog, then `pnpm publish` from `packages/base-ui`. Publish only when
+- Release steps: `pnpm build && pnpm test`, bump the version in `packages/react/package.json`,
+  add its entry to the changelog, then `pnpm publish` from `packages/react`. Publish only when
   asked.
 
 ## Commit messages

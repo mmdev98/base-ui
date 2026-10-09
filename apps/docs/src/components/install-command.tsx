@@ -5,7 +5,7 @@ import { InstallTabs } from "./install-tabs";
 
 /**
  * The install command for each package manager, in tabs. In MDX, write
- * `<InstallCommand package="@mmdev98/base-ui" />`.
+ * `<InstallCommand package="@logic-ui/react" />`.
  */
 export async function InstallCommand(props: {
   package: string;

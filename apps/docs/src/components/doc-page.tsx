@@ -97,7 +97,7 @@ export async function DocPageView(props: {
           <span className="flex gap-4 sm:ml-auto">
             {page.api ? (
               <a
-                href={`${SITE.repository}/tree/main/packages/base-ui/src/${page.api}`}
+                href={`${SITE.repository}/tree/main/packages/react/src/${page.api}`}
                 target="_blank"
                 rel="noreferrer"
                 className={pageActionClass}

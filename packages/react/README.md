@@ -1,16 +1,16 @@
-# @mmdev98/base-ui
+# @logic-ui/react
 
 Unstyled React components for accessible interfaces.
 
 Not affiliated with MUI or the Base UI team.
 
 ```sh
-pnpm add @mmdev98/base-ui
+pnpm add @logic-ui/react
 ```
 
 ```tsx
-import { Dialog } from "@mmdev98/base-ui/dialog";
-import { Clipboard } from "@mmdev98/base-ui/clipboard";
+import { Dialog } from "@logic-ui/react/dialog";
+import { Clipboard } from "@logic-ui/react/clipboard";
 
 <Clipboard.Root value="Hello">
   <Clipboard.Trigger>
@@ -21,14 +21,14 @@ import { Clipboard } from "@mmdev98/base-ui/clipboard";
 ```
 
 - Base UI components are re-exported under the same path: `@base-ui/react/dialog` →
-  `@mmdev98/base-ui/dialog`.
+  `@logic-ui/react/dialog`.
 - Hooks from `@base-ui/utils` (`useControlled`, `useStableCallback`, …) are in
-  `@mmdev98/base-ui/utils`.
+  `@logic-ui/react/utils`.
 - Nothing is styled. Style the parts with `className` and their `data-*` attributes
   (`[data-copied]`).
 
 Requires React 19. Base UI (`@base-ui/react` 1.8.0) comes with the package: don't install it
-separately, import everything from `@mmdev98/base-ui`.
+separately, import everything from `@logic-ui/react`.
 
 ## License
 

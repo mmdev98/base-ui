@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Toggle } from "@mmdev98/base-ui/toggle";
-import { ToggleGroup } from "@mmdev98/base-ui/toggle-group";
+import { Toggle } from "@logic-ui/react/toggle";
+import { ToggleGroup } from "@logic-ui/react/toggle-group";
 
 export default function ExampleToggleGroup() {
   return (

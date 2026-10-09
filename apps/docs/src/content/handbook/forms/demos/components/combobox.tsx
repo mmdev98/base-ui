@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Combobox } from "@mmdev98/base-ui/combobox";
+import { Combobox } from "@logic-ui/react/combobox";
 
 export function Root<Value, Multiple extends boolean | undefined = false>(
   props: Combobox.Root.Props<Value, Multiple>,

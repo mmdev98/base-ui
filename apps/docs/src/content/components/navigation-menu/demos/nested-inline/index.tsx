@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { NavigationMenu } from "@mmdev98/base-ui/navigation-menu";
-import { useMediaQuery } from "@mmdev98/base-ui/unstable-use-media-query";
+import { NavigationMenu } from "@logic-ui/react/navigation-menu";
+import { useMediaQuery } from "@logic-ui/react/unstable-use-media-query";
 import { audienceMenus, guideLinks, guidesPanel } from "./data";
 
 export default function ExampleNavigationMenu() {

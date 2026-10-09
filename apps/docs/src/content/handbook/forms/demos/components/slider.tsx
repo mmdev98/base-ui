@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Slider } from "@mmdev98/base-ui/slider";
+import { Slider } from "@logic-ui/react/slider";
 
 export function Root<Value extends number | readonly number[]>({
   className,

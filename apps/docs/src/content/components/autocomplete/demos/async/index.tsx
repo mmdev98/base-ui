@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Autocomplete } from "@mmdev98/base-ui/autocomplete";
+import { Autocomplete } from "@logic-ui/react/autocomplete";
 
 export default function ExampleAsyncAutocomplete() {
   const [searchValue, setSearchValue] = React.useState("");

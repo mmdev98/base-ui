@@ -1,4 +1,4 @@
-import { Avatar } from "@mmdev98/base-ui/avatar";
+import { Avatar } from "@logic-ui/react/avatar";
 
 export default function ExampleAvatar() {
   return (

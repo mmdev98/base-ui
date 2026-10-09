@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Dialog } from "@mmdev98/base-ui/dialog";
-import { ScrollArea } from "@mmdev98/base-ui/scroll-area";
+import { Dialog } from "@logic-ui/react/dialog";
+import { ScrollArea } from "@logic-ui/react/scroll-area";
 
 export default function InsideScrollDialog() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Popover } from "@mmdev98/base-ui/popover";
+import { Popover } from "@logic-ui/react/popover";
 
 const demoPopover = Popover.createHandle();
 

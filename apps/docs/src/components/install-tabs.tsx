@@ -1,6 +1,6 @@
 "use client";
 
-import { Tabs } from "@mmdev98/base-ui/tabs";
+import { Tabs } from "@logic-ui/react/tabs";
 import * as React from "react";
 import { CopyButton } from "./copy-button";
 

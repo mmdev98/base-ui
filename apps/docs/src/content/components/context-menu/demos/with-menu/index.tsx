@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { ContextMenu } from "@mmdev98/base-ui/context-menu";
-import { Menu } from "@mmdev98/base-ui/menu";
+import { ContextMenu } from "@logic-ui/react/context-menu";
+import { Menu } from "@logic-ui/react/menu";
 
 export default function ContextMenuWithMenuDemo() {
   return (

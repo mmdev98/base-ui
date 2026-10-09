@@ -60,7 +60,7 @@ The prop also accepts a function that takes the component's state as an argument
 Apply Tailwind CSS classes to each part via the `className` prop.
 
 ```tsx title="menu.tsx"
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 
 export default function ExampleMenu() {
   return (
@@ -91,7 +91,7 @@ Apply custom CSS classes to each part via the `className` prop.
 Then style those classes in a CSS Modules file.
 
 ```tsx title="menu.tsx"
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 import styles from "./menu.module.css";
 
 export default function ExampleMenu() {
@@ -116,7 +116,7 @@ export default function ExampleMenu() {
 Wrap each component part and apply styles, then assemble your styled components.
 
 ```tsx title="menu.tsx"
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menu } from "@logic-ui/react/menu";
 import styled from "@emotion/styled";
 
 const StyledMenuTrigger = styled(Menu.Trigger)`

@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@mmdev98/base-ui/dialog";
+import { Dialog } from "@logic-ui/react/dialog";
 import * as React from "react";
 import { MenuIcon } from "./icons";
 import { Logo } from "./logo";

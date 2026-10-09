@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { Menubar } from "@mmdev98/base-ui/menubar";
-import { Menu } from "@mmdev98/base-ui/menu";
+import { Menubar } from "@logic-ui/react/menubar";
+import { Menu } from "@logic-ui/react/menu";
 
 export default function ExampleMenubar() {
   return (

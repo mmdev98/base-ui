@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import { Drawer } from "@mmdev98/base-ui/drawer";
-import { ScrollArea } from "@mmdev98/base-ui/scroll-area";
+import { Drawer } from "@logic-ui/react/drawer";
+import { ScrollArea } from "@logic-ui/react/scroll-area";
 
 const ITEMS = [
   { href: "/react/overview", label: "Overview" },

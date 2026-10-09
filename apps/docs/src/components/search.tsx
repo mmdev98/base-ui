@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog } from "@mmdev98/base-ui/dialog";
+import { Dialog } from "@logic-ui/react/dialog";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { withBasePath } from "@/lib/base-path";

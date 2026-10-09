@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Toolbar } from "@mmdev98/base-ui/toolbar";
-import { ToggleGroup } from "@mmdev98/base-ui/toggle-group";
-import { Toggle } from "@mmdev98/base-ui/toggle";
-import { Select } from "@mmdev98/base-ui/select";
+import { Toolbar } from "@logic-ui/react/toolbar";
+import { ToggleGroup } from "@logic-ui/react/toggle-group";
+import { Toggle } from "@logic-ui/react/toggle";
+import { Select } from "@logic-ui/react/select";
 
 export default function ExampleToolbar() {
   return (

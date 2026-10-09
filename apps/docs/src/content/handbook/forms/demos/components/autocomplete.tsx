@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "cn";
-import { Autocomplete } from "@mmdev98/base-ui/autocomplete";
+import { Autocomplete } from "@logic-ui/react/autocomplete";
 
 export function Root<Value>(
   props: Omit<Autocomplete.Root.Props<Value>, "items"> & {

@@ -1,4 +1,4 @@
-import { Tabs } from "@mmdev98/base-ui/tabs";
+import { Tabs } from "@logic-ui/react/tabs";
 
 export default function ExampleAnimatedTabs() {
   return (
