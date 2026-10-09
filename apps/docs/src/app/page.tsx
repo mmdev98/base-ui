@@ -119,7 +119,7 @@ export default function HomePage(): React.ReactElement {
                       {page.description}
                     </span>
                     <code className="hidden font-mono text-sm text-faint group-hover:text-accent sm:block">
-                      {SITE.packageName}/{page.api}
+                      {SITE.packageName}/{page.slug.split("/").pop()}
                     </code>
                   </Link>
                 </li>
