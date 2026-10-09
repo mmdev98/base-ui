@@ -1,14 +1,31 @@
 Logic UI is a library of **headless React primitives**. The components handle behaviour and
 accessibility (state, keyboard, focus, ARIA) and render no styles: you bring the CSS.
 
+It is built on [Base UI](https://base-ui.com) and extends it. Every Base UI component is
+re-exported under the same path, with the same API, and Logic UI adds the components Base UI
+doesn't have, written the same way.
+
 It covers the common building blocks, such as dialogs, menus, popovers, selects and tabs, and
 richer components such as the [Gallery](/docs/components/gallery) and the
 [Clipboard](/docs/components/clipboard).
 
+## Built on Base UI
+
+- **Same components.** `@logic-ui/react/dialog` is `@base-ui/react/dialog`, `@logic-ui/react/menu`
+  is `@base-ui/react/menu`, and so on for every public entry point. Their pages here link to the
+  full docs on [base-ui.com](https://base-ui.com).
+- **More components.** Logic UI adds its own primitives, such as the
+  [Gallery](/docs/components/gallery) and the [Clipboard](/docs/components/clipboard). They follow
+  Base UI's API, so they compose with its parts.
+- **A drop-in replacement.** An app that already uses Base UI can swap it for Logic UI without
+  changing any import. See [Migrate from Base UI](/docs/quick-start#migrate-from-base-ui).
+
+Each Logic UI release pins one Base UI version, listed in the [changelog](/docs/changelog).
+
 ## One package
 
-Apps install only `@logic-ui/react`. Every component comes from it, so they share the same
-contexts and work together.
+Apps install only `@logic-ui/react`, never `@base-ui/react` next to it. Every component comes from
+it, so there is one copy of Base UI and all components share the same contexts.
 
 ```bash
 pnpm add @logic-ui/react

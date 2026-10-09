@@ -54,3 +54,49 @@ import { Dialog } from "@logic-ui/react/dialog";
 import { Menu } from "@logic-ui/react/menu";
 import { useRender } from "@logic-ui/react/use-render";
 ```
+
+## Migrate from Base UI
+
+Logic UI re-exports every public Base UI entry point under the same path, so it can replace
+`@base-ui/react` in an existing app. There are two ways to do it.
+
+### Keep your imports
+
+Alias `@base-ui/react` to Logic UI in `package.json`, then reinstall. Every
+`import … from "@base-ui/react/…"` keeps working and now resolves to Logic UI, and so do the
+libraries in your app that depend on Base UI:
+
+```json title="package.json"
+{
+  "dependencies": {
+    "@base-ui/react": "npm:@logic-ui/react@0.1.0"
+  }
+}
+```
+
+Logic UI's own components are then imported through the same alias:
+
+```tsx title="Import a Logic UI component"
+import { Clipboard } from "@base-ui/react/clipboard";
+```
+
+### Switch your imports
+
+Or remove `@base-ui/react`, install `@logic-ui/react`, and replace the package name in your
+imports:
+
+```bash
+pnpm remove @base-ui/react
+pnpm add @logic-ui/react
+```
+
+```tsx title="Change the imports"
+// Before
+import { Dialog } from "@base-ui/react/dialog";
+// After
+import { Dialog } from "@logic-ui/react/dialog";
+```
+
+Either way, check which Base UI version your Logic UI release is built on in the
+[changelog](/docs/changelog). `@base-ui/react/internals/*` is private API and is not
+re-exported.
