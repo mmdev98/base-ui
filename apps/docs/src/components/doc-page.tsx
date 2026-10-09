@@ -16,6 +16,7 @@ import {
 import { CopyButton } from "./copy-button";
 import { ExternalLinkIcon, GitHubIcon, MarkdownIcon } from "./icons";
 import { NewBadge } from "./new-badge";
+import { ScrollArea } from "./scroll-area";
 import { TableOfContents } from "./table-of-contents";
 
 const pageActionClass =
@@ -155,8 +156,12 @@ export async function DocPageView(props: {
         </nav>
       </article>
 
-      <aside className="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto py-10 xl:block">
-        <TableOfContents entries={sections} />
+      <aside className="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 flex-col xl:flex">
+        <ScrollArea className="flex-1" fadeEdges>
+          <div className="py-10">
+            <TableOfContents entries={sections} />
+          </div>
+        </ScrollArea>
       </aside>
     </div>
   );

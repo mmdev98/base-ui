@@ -6,6 +6,7 @@ import * as React from "react";
 import { withBasePath } from "@/lib/base-path";
 import type { SearchEntry } from "@/lib/markdown";
 import { SearchIcon } from "./icons";
+import { ScrollArea } from "./scroll-area";
 
 let indexPromise: Promise<SearchEntry[]> | undefined;
 
@@ -89,6 +90,13 @@ export function Search(): React.ReactElement {
     }
   }, [open]);
 
+  // Keeps the result chosen with the arrow keys in view.
+  React.useEffect(() => {
+    document
+      .getElementById(`${listId}-${active}`)
+      ?.scrollIntoView({ block: "nearest" });
+  }, [listId, active]);
+
   function go(entry: SearchEntry | undefined): void {
     if (!entry) {
       return;
@@ -148,43 +156,40 @@ export function Search(): React.ReactElement {
             </kbd>
           </div>
 
-          <ul
-            id={listId}
-            role="listbox"
-            aria-label="Results"
-            className="overflow-y-auto p-2"
-          >
-            {query && results.length === 0 ? (
-              <li className="px-3 py-8 text-center text-sm text-faint">
-                No results for “{query}”
-              </li>
-            ) : null}
-            {results.map((entry, index) => (
-              <li
-                key={entry.href}
-                id={`${listId}-${index}`}
-                role="option"
-                aria-selected={index === active}
-                onMouseMove={() => setActive(index)}
-                onClick={() => go(entry)}
-                className="cursor-pointer px-3 py-2.5 aria-selected:bg-raised"
-              >
-                <div className="flex items-baseline gap-2 text-sm">
-                  <span className="font-mono text-xs text-faint">
-                    {entry.page}
-                  </span>
-                  {entry.heading ? (
-                    <span className="text-fg">{entry.heading}</span>
+          <ScrollArea className="min-h-0 shrink" fadeEdges>
+            <ul id={listId} role="listbox" aria-label="Results" className="p-2">
+              {query && results.length === 0 ? (
+                <li className="px-3 py-8 text-center text-sm text-faint">
+                  No results for “{query}”
+                </li>
+              ) : null}
+              {results.map((entry, index) => (
+                <li
+                  key={entry.href}
+                  id={`${listId}-${index}`}
+                  role="option"
+                  aria-selected={index === active}
+                  onMouseMove={() => setActive(index)}
+                  onClick={() => go(entry)}
+                  className="cursor-pointer px-3 py-2.5 aria-selected:bg-raised"
+                >
+                  <div className="flex items-baseline gap-2 text-sm">
+                    <span className="font-mono text-xs text-faint">
+                      {entry.page}
+                    </span>
+                    {entry.heading ? (
+                      <span className="text-fg">{entry.heading}</span>
+                    ) : null}
+                  </div>
+                  {entry.text ? (
+                    <p className="mt-0.5 truncate text-xs text-muted">
+                      {getSnippet(entry.text, query)}
+                    </p>
                   ) : null}
-                </div>
-                {entry.text ? (
-                  <p className="mt-0.5 truncate text-xs text-muted">
-                    {getSnippet(entry.text, query)}
-                  </p>
-                ) : null}
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </ScrollArea>
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>

@@ -5,6 +5,7 @@ import { Tabs } from "@logic-ui/react/tabs";
 import { cn } from "cn";
 import * as React from "react";
 import { CopyButton } from "./copy-button";
+import { ScrollArea } from "./scroll-area";
 
 export interface DemoFrameFile {
   name: string;
@@ -47,17 +48,23 @@ export function DemoFrame(props: {
             </span>
           </Collapsible.Trigger>
 
-          <Tabs.List className="relative ml-auto flex max-w-[60%] items-center gap-0.5 overflow-x-auto">
-            {files.map((entry) => (
-              <Tabs.Tab
-                key={entry.name}
-                value={entry.name}
-                className="h-7 shrink-0 cursor-pointer px-2 font-mono text-xs text-faint hover:text-fg data-active:bg-raised data-active:text-fg"
-              >
-                {entry.name}
-              </Tabs.Tab>
-            ))}
-          </Tabs.List>
+          <ScrollArea
+            className="ml-auto max-w-[60%] min-w-0"
+            hideScrollbar
+            fadeEdges
+          >
+            <Tabs.List className="relative flex w-max items-center gap-0.5">
+              {files.map((entry) => (
+                <Tabs.Tab
+                  key={entry.name}
+                  value={entry.name}
+                  className="h-7 shrink-0 cursor-pointer px-2 font-mono text-xs text-faint hover:text-fg data-active:bg-raised data-active:text-fg"
+                >
+                  {entry.name}
+                </Tabs.Tab>
+              ))}
+            </Tabs.List>
+          </ScrollArea>
           {current ? (
             <CopyButton value={current.code} label={`Copy ${current.name}`} />
           ) : null}
@@ -66,10 +73,12 @@ export function DemoFrame(props: {
         <Collapsible.Panel className="h-(--collapsible-panel-height) overflow-hidden border-t border-line bg-panel transition-[height] duration-200 data-ending-style:h-0 data-starting-style:h-0">
           {files.map((entry) => (
             <Tabs.Panel key={entry.name} value={entry.name}>
-              <div
-                className="max-h-120 overflow-auto px-4 py-3.5 font-mono text-[13px] leading-6"
-                dangerouslySetInnerHTML={{ __html: entry.html }}
-              />
+              <ScrollArea viewportProps={{ className: "max-h-120" }}>
+                <div
+                  className="w-max min-w-full px-4 py-3.5 font-mono text-[13px] leading-6"
+                  dangerouslySetInnerHTML={{ __html: entry.html }}
+                />
+              </ScrollArea>
             </Tabs.Panel>
           ))}
         </Collapsible.Panel>

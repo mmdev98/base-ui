@@ -3,6 +3,7 @@
 import { Tabs } from "@logic-ui/react/tabs";
 import * as React from "react";
 import { CopyButton } from "./copy-button";
+import { ScrollArea } from "./scroll-area";
 
 export interface InstallTabsCommand {
   name: string;
@@ -25,17 +26,19 @@ export function InstallTabs(props: {
       className="my-6 overflow-hidden border border-line bg-panel"
     >
       <div className="flex h-10 items-center gap-2 border-b border-line pr-1.5 pl-2">
-        <Tabs.List className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto">
-          {commands.map((entry) => (
-            <Tabs.Tab
-              key={entry.name}
-              value={entry.name}
-              className="h-7 shrink-0 cursor-pointer px-2 font-mono text-xs text-faint hover:text-fg data-active:bg-raised data-active:text-fg"
-            >
-              {entry.name}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List>
+        <ScrollArea className="min-w-0 flex-1" hideScrollbar fadeEdges>
+          <Tabs.List className="flex w-max items-center gap-0.5">
+            {commands.map((entry) => (
+              <Tabs.Tab
+                key={entry.name}
+                value={entry.name}
+                className="h-7 shrink-0 cursor-pointer px-2 font-mono text-xs text-faint hover:text-fg data-active:bg-raised data-active:text-fg"
+              >
+                {entry.name}
+              </Tabs.Tab>
+            ))}
+          </Tabs.List>
+        </ScrollArea>
         {current ? (
           <CopyButton
             value={current.code}
@@ -45,10 +48,12 @@ export function InstallTabs(props: {
       </div>
       {commands.map((entry) => (
         <Tabs.Panel key={entry.name} value={entry.name}>
-          <div
-            className="overflow-x-auto px-4 py-3.5 font-mono text-[13px] leading-6"
-            dangerouslySetInnerHTML={{ __html: entry.html }}
-          />
+          <ScrollArea>
+            <div
+              className="w-max min-w-full px-4 py-3.5 font-mono text-[13px] leading-6"
+              dangerouslySetInnerHTML={{ __html: entry.html }}
+            />
+          </ScrollArea>
         </Tabs.Panel>
       ))}
     </Tabs.Root>
