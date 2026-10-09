@@ -19,7 +19,7 @@ behaviour and accessibility (state, keyboard, focus, ARIA) and render **no style
 ```text
 .
 ├── packages/
-│   └── base-ui/             @logic-ui/react, the published package
+│   └── react/               @logic-ui/react, the published package
 │       ├── src/<component>/ one folder per entry point
 │       ├── scripts/         generate-exports.mjs
 │       └── test/            Vitest setup and shared helpers
