@@ -22,7 +22,7 @@ import {
 import {
   LIGHTBOX_FLIGHT_REST,
   getLightboxFlightKeyframe,
-  getLightboxFlightRadius,
+  getLightboxFlightRadii,
   prefersLightboxReducedMotion,
 } from "../utils/lightbox-flight";
 import {
@@ -286,7 +286,7 @@ export function LightboxRoot<Item = unknown>(
     };
   };
 
-  /** Rect and corner radius of the item's trigger, when it's on screen. */
+  /** Rect and corner radii of the item's trigger, when it's on screen. */
   const getTriggerTarget = (itemValue: LightboxItemValue) => {
     const trigger = findTrigger(itemValue);
     if (!trigger?.isConnected) return null;
@@ -297,11 +297,9 @@ export function LightboxRoot<Item = unknown>(
       height: win.document.documentElement.clientHeight,
     };
     if (!isLightboxRectInViewport(rect, viewport)) return null;
-    const radius = getLightboxFlightRadius(
-      win.getComputedStyle(trigger).borderTopLeftRadius,
-      rect,
-    );
-    return { rect, radius };
+    // Each corner, so a tile rounded on one side only flies with that side rounded.
+    const radii = getLightboxFlightRadii(win.getComputedStyle(trigger), rect);
+    return { rect, radii };
   };
 
   const stopFlight = () => {
@@ -376,7 +374,7 @@ export function LightboxRoot<Item = unknown>(
     const target = getTriggerTarget(activeValue);
     const keyframes: Keyframe[] = target
       ? [
-          getLightboxFlightKeyframe(target.rect, flight.box, target.radius),
+          getLightboxFlightKeyframe(target.rect, flight.box, target.radii),
           LIGHTBOX_FLIGHT_REST,
         ]
       : [FADED_OUT, FADED_IN];
@@ -405,7 +403,7 @@ export function LightboxRoot<Item = unknown>(
     const keyframes: Keyframe[] = target
       ? [
           { transform: current, clipPath: "inset(0px 0px round 0px)" },
-          getLightboxFlightKeyframe(target.rect, flight.box, target.radius),
+          getLightboxFlightKeyframe(target.rect, flight.box, target.radii),
         ]
       : [
           { ...FADED_IN, transform: current },

@@ -13,15 +13,37 @@ export function getLightboxFlightRadius(
   return Math.min(value, Math.min(rect.width, rect.height) / 2);
 }
 
+/** Corner radii in px: top-left, top-right, bottom-right, bottom-left. */
+export type LightboxFlightRadii = [number, number, number, number];
+
+/** The four corner radii of an element's computed style, each capped like `getLightboxFlightRadius`. */
+export function getLightboxFlightRadii(
+  style: Pick<
+    CSSStyleDeclaration,
+    | "borderTopLeftRadius"
+    | "borderTopRightRadius"
+    | "borderBottomRightRadius"
+    | "borderBottomLeftRadius"
+  >,
+  rect: LightboxRect,
+): LightboxFlightRadii {
+  return [
+    getLightboxFlightRadius(style.borderTopLeftRadius, rect),
+    getLightboxFlightRadius(style.borderTopRightRadius, rect),
+    getLightboxFlightRadius(style.borderBottomRightRadius, rect),
+    getLightboxFlightRadius(style.borderBottomLeftRadius, rect),
+  ];
+}
+
 /**
  * Keyframe that draws the image of `box` as it looks in `source`: scaled to
- * cover it, centred on it, and clipped to it with `radius` corners. Animate
+ * cover it, centred on it, and clipped to it with its corner `radii`. Animate
  * between it and `LIGHTBOX_FLIGHT_REST` to fly the image between the two.
  */
 export function getLightboxFlightKeyframe(
   source: LightboxRect,
   box: LightboxRect,
-  radius: number,
+  radii: LightboxFlightRadii,
 ): Keyframe {
   const scale = Math.max(source.width / box.width, source.height / box.height);
   const x = source.left + source.width / 2 - (box.left + box.width / 2);
@@ -31,7 +53,9 @@ export function getLightboxFlightKeyframe(
   const insetY = Math.max(0, (box.height - source.height / scale) / 2);
   return {
     transform: `translate3d(${x}px, ${y}px, 0px) scale(${scale})`,
-    clipPath: `inset(${insetY}px ${insetX}px round ${radius / scale}px)`,
+    clipPath: `inset(${insetY}px ${insetX}px round ${radii
+      .map((radius) => `${radius / scale}px`)
+      .join(" ")})`,
   };
 }
 
