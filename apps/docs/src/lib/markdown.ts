@@ -117,14 +117,11 @@ function demoToMarkdown(
 const API_REFERENCE =
   /<ApiReference\s+component="([^"]+)"(?:\s+parts=\{\[([^\]]*)\]\})?\s*\/>/g;
 
-/** `<InstallCommand package="@mmdev98/base-ui" alias="@base-ui/react" />`, `alias` optional. */
-const INSTALL_COMMAND =
-  /<InstallCommand\s+package="([^"]+)"(?:\s+alias="([^"]+)")?\s*\/>/g;
+/** `<InstallCommand package="@mmdev98/base-ui" />`. */
+const INSTALL_COMMAND = /<InstallCommand\s+package="([^"]+)"\s*\/>/g;
 
-function installToMarkdown(packageName: string, alias?: string): string {
-  const lines = getInstallCommands(packageName, alias).map(
-    (entry) => entry.command,
-  );
+function installToMarkdown(packageName: string): string {
+  const lines = getInstallCommands(packageName).map((entry) => entry.command);
   return `\`\`\`bash\n${lines.join("\n")}\n\`\`\``;
 }
 
@@ -147,10 +144,8 @@ export function getPageMarkdown(page: DocPage): string {
               /<(?!Demo\b|ApiReference\b|InstallCommand\b)[A-Z]\w*[^>]*\/>/g,
               "",
             )
-            .replace(
-              INSTALL_COMMAND,
-              (_, packageName: string, alias?: string) =>
-                installToMarkdown(packageName, alias),
+            .replace(INSTALL_COMMAND, (_, packageName: string) =>
+              installToMarkdown(packageName),
             )
             .replace(/<Demo\s+src="([^"]+)"\s*\/>/g, (_, src: string) =>
               demoToMarkdown(page, src, printed),

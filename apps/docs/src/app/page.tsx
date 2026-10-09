@@ -24,9 +24,8 @@ const PRINCIPLES = [
     value: "every part takes a render prop; props and handlers are merged.",
   },
   {
-    key: "base-ui",
-    value:
-      "every entry point re-exported, so there is one copy and one context.",
+    key: "package",
+    value: "one package, one copy and one context for every component.",
   },
   {
     key: "rsc",

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-/** Base UI's mark, then the wordmark. */
+/** The mark, then the wordmark. */
 export function Logo(): React.ReactElement {
   return (
     <span className="flex items-center gap-2 font-mono text-sm font-medium tracking-tight">

@@ -1,25 +1,22 @@
 Base UI is a library of **headless React primitives**. The components handle behaviour and
 accessibility (state, keyboard, focus, ARIA) and render no styles: you bring the CSS.
 
-It has two layers:
+It covers the common building blocks, such as dialogs, menus, popovers, selects and tabs, and
+richer components such as the [Gallery](/docs/components/gallery) and the
+[Clipboard](/docs/components/clipboard).
 
-- **Every Base UI component**, re-exported under the same path. `@mmdev98/base-ui/dialog` is
-  Base UI's dialog, so the [Base UI docs](https://base-ui.com) apply as they are.
-- **Primitives Base UI doesn't have**, such as the [Gallery](/docs/components/gallery) and the
-  [Clipboard](/docs/components/clipboard). They follow Base UI's API, so they work the same way.
+## One package
 
-## Why one package
-
-Apps install only `@mmdev98/base-ui`. It pins one version of Base UI, so the extra primitives
-and the Base UI components always share the same copy of it, and their contexts work together.
+Apps install only `@mmdev98/base-ui`. Every component comes from it, so they share the same
+contexts and work together.
 
 ```bash
 pnpm add @mmdev98/base-ui
 ```
 
-## Same API as Base UI
+## One API
 
-Every primitive here feels like a Base UI component:
+Every component works the same way:
 
 - **Parts.** A component is a namespace of parts: `<Clipboard.Root>`, `<Clipboard.Trigger>`. Each
   part renders one element and takes its usual HTML props.

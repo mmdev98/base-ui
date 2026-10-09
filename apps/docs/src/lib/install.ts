@@ -14,18 +14,11 @@ export interface InstallCommandEntry {
 
 /**
  * The install command of each package manager for `packageName`, at its
- * `latest` tag. With an `alias`, the package is installed under that name
- * (`npm:` alias).
+ * `latest` tag.
  */
-export function getInstallCommands(
-  packageName: string,
-  alias?: string,
-): InstallCommandEntry[] {
-  const spec = alias
-    ? `${alias}@npm:${packageName}@latest`
-    : `${packageName}@latest`;
+export function getInstallCommands(packageName: string): InstallCommandEntry[] {
   return PACKAGE_MANAGERS.map((manager) => ({
     name: manager.name,
-    command: `${manager.command} ${spec}`,
+    command: `${manager.command} ${packageName}@latest`,
   }));
 }

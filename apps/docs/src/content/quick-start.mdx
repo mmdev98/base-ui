@@ -1,23 +1,12 @@
 ## Install
 
-Install the package. React 19 is a peer dependency. Don't add `@base-ui/react` yourself:
-this package brings the version it was built with.
+Install the package. React 19 is a peer dependency.
 
 <InstallCommand package="@mmdev98/base-ui" />
 
-### Install it as `@base-ui/react`
-
-To move an app that already uses Base UI, install the package under the `@base-ui/react`
-name with an `npm:` alias. Your imports (`@base-ui/react/dialog`) stay the same and now
-resolve to this package, so the extra primitives come with them:
-
-<InstallCommand package="@mmdev98/base-ui" alias="@base-ui/react" />
-
-Replace the existing `@base-ui/react` entry. Don't keep both.
-
 ## Set up the portal root
 
-Base UI's popups (dialogs, menus, the gallery viewer) are portaled to the end of `<body>`.
+Popups (dialogs, menus, the gallery viewer) are portaled to the end of `<body>`.
 Give your app's root its own stacking context, so they always show on top of it:
 
 ```tsx title="app/layout.tsx"
@@ -56,14 +45,12 @@ components. The part's props and behaviour are merged into it:
 </Clipboard.Trigger>
 ```
 
-## Use Base UI components
+## Import other components
 
-Every Base UI component is here too, under the same path as in `@base-ui/react`:
+Every component has its own path in the same package:
 
 ```tsx title="Import from one package"
 import { Dialog } from "@mmdev98/base-ui/dialog";
 import { Menu } from "@mmdev98/base-ui/menu";
 import { useRender } from "@mmdev98/base-ui/use-render";
 ```
-
-Their docs live on [base-ui.com](https://base-ui.com).
