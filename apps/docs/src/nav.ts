@@ -12,6 +12,8 @@ export interface DocPage {
   file: string;
   /** Library entry point whose API the page documents (`src/<api>`). */
   api?: string;
+  /** Shows a "new" badge next to the title. */
+  new?: boolean;
 }
 
 export interface DocSection {
@@ -54,6 +56,7 @@ export const sections: DocSection[] = [
           "Thumbnails that open a full-screen image viewer with mobile gestures.",
         file: "components/gallery/index.mdx",
         api: "gallery",
+        new: true,
       },
       {
         slug: "components/clipboard",
@@ -62,6 +65,7 @@ export const sections: DocSection[] = [
           "A button that copies a value and shows that it was copied.",
         file: "components/clipboard/index.mdx",
         api: "clipboard",
+        new: true,
       },
     ],
   },

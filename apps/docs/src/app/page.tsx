@@ -1,6 +1,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { ArrowRightIcon, GitHubIcon } from "@/components/icons";
+import { NewBadge } from "@/components/new-badge";
 import { SiteHeader } from "@/components/site-header";
 import { withBasePath } from "@/lib/base-path";
 import { getLibraryVersion } from "@/lib/library";
@@ -110,8 +111,9 @@ export default function HomePage(): React.ReactElement {
                     href={getPageHref(page)}
                     className="group grid gap-1 py-4 sm:grid-cols-[8rem_1fr_auto] sm:items-baseline sm:gap-6"
                   >
-                    <span className="font-mono text-sm font-medium text-fg">
+                    <span className="flex items-center gap-2 font-mono text-sm font-medium text-fg">
                       {page.title}
+                      {page.new ? <NewBadge /> : null}
                     </span>
                     <span className="text-sm text-muted">
                       {page.description}

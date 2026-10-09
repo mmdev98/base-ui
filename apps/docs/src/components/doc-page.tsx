@@ -15,6 +15,7 @@ import {
 } from "@/nav";
 import { CopyButton } from "./copy-button";
 import { ExternalLinkIcon, GitHubIcon, MarkdownIcon } from "./icons";
+import { NewBadge } from "./new-badge";
 import { TableOfContents } from "./table-of-contents";
 
 const pageActionClass =
@@ -67,8 +68,9 @@ export async function DocPageView(props: {
             </>
           ) : null}
         </p>
-        <h1 className="font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+        <h1 className="flex items-center gap-3 font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
           {page.title}
+          {page.new ? <NewBadge /> : null}
         </h1>
         <p className="mt-3 max-w-2xl text-lg leading-8 text-muted">
           {page.description}
