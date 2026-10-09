@@ -1,20 +1,20 @@
 import { withBasePath } from "@/lib/base-path";
-import { getPageMarkdown } from "@/lib/markdown";
-import { getLibraryVersion } from "@/lib/library";
-import { pages, sections, SITE } from "@/nav";
+import { sections, SITE } from "@/nav";
 
 export const dynamic = "force-static";
 
 /**
- * The docs for language models (https://llmstxt.org), in one file: the page
- * index, then every page as Markdown.
+ * Index of the docs for language models (https://llmstxt.org): one link per
+ * page to its Markdown version, grouped by section.
  */
 export function GET(): Response {
-  const index = [
+  const body = [
     `# ${SITE.name}`,
     "",
-    `> Unstyled React components for accessible interfaces ` +
-      `(\`${SITE.packageName}@${getLibraryVersion()}\`).`,
+    `This is the documentation for the \`${SITE.packageName}\` package.`,
+    "It contains a collection of components and utilities for building user interfaces in React.",
+    "The library is designed to be composable and styling agnostic.",
+    "The Tailwind CSS examples are written for Tailwind CSS v4. If `package.json` uses Tailwind CSS v3, automatically convert unsupported styles to v3-compatible equivalents.",
     "",
     ...sections.flatMap((section) => [
       `## ${section.title}`,
@@ -26,8 +26,6 @@ export function GET(): Response {
       "",
     ]),
   ].join("\n");
-
-  const body = [index, ...pages.map(getPageMarkdown)].join("\n\n---\n\n");
 
   return new Response(body, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },

@@ -339,7 +339,7 @@ are tried by hand: there is no separate playground.
   enums exported from `index.ts`, with the TypeScript compiler API. So the JSDoc rules above are
   what the docs show.
 - **Search and llms.txt** are static routes built from the same MDX: `/search-index.json`,
-  `/llms.txt` (the page index, then every page in full) and `/md/<slug>.md`.
+  `/llms.txt` (an index linking each page's Markdown) and `/md/<slug>.md`.
   `src/lib/markdown.ts` turns a page into Markdown.
 - The docs track nothing and send nothing: no analytics, no feedback endpoint. Keep it that way.
 - `next dev` writes `apps/docs/AGENTS.md` with Next.js notes. Leave it.
