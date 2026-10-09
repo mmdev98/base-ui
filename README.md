@@ -16,4 +16,4 @@ already on Base UI can switch without changing its imports. Alias it in your app
 
 ## Documentation
 
-To get started, check out the [Logic UI documentation](https://mmdev98.github.io/base-ui/).
+To get started, check out the [Logic UI documentation](https://mmdev98.github.io/logic-ui/).

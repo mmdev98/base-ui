@@ -398,5 +398,5 @@ export function getSection(page: DocPage): DocSection {
 export const SITE = {
   name: "Logic UI",
   packageName: "@logic-ui/react",
-  repository: "https://github.com/mmdev98/base-ui",
+  repository: "https://github.com/mmdev98/logic-ui",
 };
