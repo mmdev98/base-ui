@@ -113,7 +113,7 @@ function demoToMarkdown(
     .join("\n\n");
 }
 
-/** `<ApiReference component="gallery" parts={["Root", "Trigger"]} />`, `parts` optional. */
+/** `<ApiReference component="lightbox" parts={["Root", "Trigger"]} />`, `parts` optional. */
 const API_REFERENCE =
   /<ApiReference\s+component="([^"]+)"(?:\s+parts=\{\[([^\]]*)\]\})?\s*\/>/g;
 
@@ -202,7 +202,10 @@ export interface PageSection {
  * and types (ids as `ApiReference` gives them).
  */
 export function getPageSections(page: DocPage): PageSection[] {
-  const source = getPageSource(page).replace(/```[\s\S]*?```/g, "");
+  const source = getPageSource(page)
+    .replace(/```[\s\S]*?```/g, "")
+    // Prettier wraps a long `<ApiReference>` over several lines; read it as one.
+    .replace(API_REFERENCE, (tag) => tag.replace(/\s+/g, " "));
   const slugger = new GithubSlugger();
   const sections: PageSection[] = [];
   let text: string[] = [];

@@ -9,12 +9,15 @@ export interface TocEntry {
   level: number;
 }
 
-/** Links to the page's h2 and h3 headings, highlighting the one in view. */
+/** Indent of each heading level, h2 to h4. */
+const INDENT: Record<number, string> = { 2: "pl-3", 3: "pl-6", 4: "pl-9" };
+
+/** Links to the page's h2, h3 and h4 headings, highlighting the one in view. */
 export function TableOfContents(props: {
   entries: TocEntry[];
 }): React.ReactElement | null {
   const entries = React.useMemo(
-    () => props.entries.filter((entry) => entry.level <= 3),
+    () => props.entries.filter((entry) => entry.level <= 4),
     [props.entries],
   );
   const [activeId, setActiveId] = React.useState<string | null>(null);
@@ -50,7 +53,7 @@ export function TableOfContents(props: {
               href={`#${entry.id}`}
               className={cn(
                 "-ml-px block border-l py-1 leading-5 transition-colors hover:text-fg",
-                entry.level === 3 ? "pl-6" : "pl-3",
+                INDENT[entry.level],
                 entry.id === activeId
                   ? "border-accent text-fg"
                   : "border-transparent text-faint",
