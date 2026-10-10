@@ -19,7 +19,7 @@ export const classes = {
   popup: "fixed inset-0 text-white outline-none",
   viewport:
     "absolute inset-0 cursor-zoom-in gap-x-4 in-data-zoomed:cursor-grab data-dragging:cursor-grabbing",
-  item: "pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] md:px-24 md:py-18",
+  item: "pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]",
   control:
     "opacity-[calc(1_-_var(--lightbox-dismiss-progress,0)*2)] transition-opacity duration-200 in-data-dragging:transition-none in-data-controls-hidden:pointer-events-none in-data-controls-hidden:opacity-0 in-data-starting-style:opacity-0 in-data-ending-style:pointer-events-none in-data-ending-style:opacity-0",
   close:

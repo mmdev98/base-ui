@@ -7,9 +7,9 @@ import { classes } from "./_classes";
 
 /** Tailwind classes of this demo. */
 const local = {
-  Dots: "absolute inset-x-0 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] flex justify-center gap-1",
+  Dots: "absolute left-1/2 p-2 -translate-x-1/2 rounded-full bg-black/50 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] flex justify-center gap-2",
   // The button is larger than the dot, so it stays easy to tap.
-  Dot: "group flex size-6 cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-white",
+  Dot: "group flex cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 focus-visible:outline-2 focus-visible:outline-white",
   Mark: "size-2 rounded-full bg-white/40 transition-[width,background-color] duration-200 group-hover:bg-white/70 group-data-active:w-5 group-data-active:bg-white",
 };
 

@@ -14,7 +14,7 @@ const local = {
   Strip:
     "absolute inset-y-0 left-0 flex w-24 flex-col items-center gap-2 overflow-y-auto border-r border-white/10 bg-black/40 px-4 py-[calc(1rem+env(safe-area-inset-top))]",
   Thumbnail:
-    "aspect-square w-full flex-none cursor-pointer overflow-hidden rounded-md border-2 border-transparent bg-white/10 p-0 opacity-50 transition-opacity duration-150 hover:opacity-100 data-active:border-white data-active:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+    "aspect-square w-full flex-none cursor-pointer overflow-hidden rounded-md border-2 border-transparent bg-white/10 p-0 opacity-75 transition-opacity duration-150 hover:opacity-100 data-active:border-white data-active:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
   Image: "size-full object-cover",
 };
 

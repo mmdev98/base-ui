@@ -12,9 +12,9 @@ const local = {
   Caption: "m-0 text-sm",
   // Over the image, centred, and scrolling when the photos don't fit.
   Strip:
-    "flex max-w-full gap-1 overflow-x-auto rounded-xl bg-black/50 p-1 backdrop-blur-md",
+    "flex max-w-full gap-2 overflow-x-auto rounded-xl bg-black/50 p-2 backdrop-blur-md",
   Thumbnail:
-    "aspect-square size-12 flex-none cursor-pointer overflow-hidden rounded-lg border-none bg-white/10 p-0 opacity-60 outline-offset-1 transition-opacity duration-200 hover:opacity-100 data-active:opacity-100 data-active:outline-2 data-active:outline-white focus-visible:outline-2 focus-visible:outline-white",
+    "aspect-square size-12 flex-none cursor-pointer overflow-hidden rounded-lg border-none bg-white/10 p-0 outline-offset-1 transition-opacity duration-200 hover:opacity-100 data-active:opacity-100 data-active:outline-2 data-active:outline-white focus-visible:outline-2 focus-visible:outline-white",
   Image: "size-full object-cover",
 };
 
