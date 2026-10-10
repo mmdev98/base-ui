@@ -22,8 +22,11 @@ const CONTENT_DIR = path.join(process.cwd(), "src/content");
  * command per package manager, other components are dropped.
  */
 
+/** The page's MDX source, with LF line endings even where Git checks it out with CRLF. */
 export function getPageSource(page: DocPage): string {
-  return fs.readFileSync(path.join(CONTENT_DIR, page.file), "utf8");
+  return fs
+    .readFileSync(path.join(CONTENT_DIR, page.file), "utf8")
+    .replaceAll("\r\n", "\n");
 }
 
 function escapeCell(value: string): string {
