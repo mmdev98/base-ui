@@ -12,8 +12,11 @@ export interface DocPage {
   file: string;
   /** Library entry point whose API the page documents (`src/<api>`). */
   api?: string;
-  /** Shows a "new" badge next to the title. */
-  new?: boolean;
+  /**
+   * Badge next to the title: `"new"` for a recent page, `"preview"` for an API
+   * that may still change.
+   */
+  badge?: "new" | "preview";
 }
 
 export interface DocSection {
@@ -143,7 +146,7 @@ export const sections: DocSection[] = [
           "A button that copies a value and shows that it was copied.",
         file: "components/clipboard/index.mdx",
         api: "clipboard",
-        new: true,
+        badge: "preview",
       },
       {
         slug: "components/collapsible",
@@ -211,7 +214,7 @@ export const sections: DocSection[] = [
           "A full-screen viewer that opens from its triggers, with mobile gestures and zoom.",
         file: "components/lightbox/index.mdx",
         api: "lightbox",
-        new: true,
+        badge: "preview",
       },
       {
         slug: "components/menu",

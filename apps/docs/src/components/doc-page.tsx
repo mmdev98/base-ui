@@ -15,7 +15,7 @@ import {
 } from "@/nav";
 import { CopyButton } from "./copy-button";
 import { ExternalLinkIcon, GitHubIcon, MarkdownIcon } from "./icons";
-import { NewBadge } from "./new-badge";
+import { PageBadge } from "./page-badge";
 import { ScrollArea } from "./scroll-area";
 import { TableOfContents } from "./table-of-contents";
 
@@ -71,7 +71,7 @@ export async function DocPageView(props: {
         </p>
         <h1 className="flex items-center gap-3 font-mono text-3xl font-semibold tracking-tight text-fg md:text-4xl">
           {page.title}
-          {page.new ? <NewBadge /> : null}
+          {page.badge ? <PageBadge badge={page.badge} /> : null}
         </h1>
         <p className="mt-3 max-w-2xl text-lg leading-8 text-muted">
           {page.description}

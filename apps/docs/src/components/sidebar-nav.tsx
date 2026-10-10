@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { getPageHref, sections } from "@/nav";
-import { NewBadge } from "./new-badge";
+import { PageBadge } from "./page-badge";
 
 export function SidebarNav(props: {
   onNavigate?: () => void;
@@ -37,7 +37,9 @@ export function SidebarNav(props: {
                     )}
                   >
                     {page.title}
-                    {page.new ? <NewBadge className="ml-auto" /> : null}
+                    {page.badge ? (
+                      <PageBadge badge={page.badge} className="ml-auto" />
+                    ) : null}
                   </Link>
                 </li>
               );
